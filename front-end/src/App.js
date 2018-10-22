@@ -1,28 +1,43 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React, {Component} from 'react';
+import {bindActionCreators} from "redux"
+import {connect} from "react-redux";
+import {createHall} from "./Actions/hallActions.js"
+import AppBar from "./components/AppBar"
+import HallLists from "./components/HallLists.js"
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            halls: [{name: "A"}, {name: "B"}]
+        };
+    }
+
+    createHall() {
+        this.props.onCreateHall("Hall B")
+    }
+
+    render() {
+        return (
+            <div>
+                <AppBar />
+                <HallLists />
+
+            </div>
+        );
+    }
 }
 
-export default App;
+const mapStateToProps = state => ({
+    halls: state.halls
+});
+
+const mapDispatchToProps = (dispatch, props) => {
+
+    return bindActionCreators({
+        onCreateHall: createHall
+    }, dispatch)
+
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
