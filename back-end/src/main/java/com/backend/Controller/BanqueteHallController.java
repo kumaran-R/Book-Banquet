@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by Kumaran on 10/18/2018.
  */
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/halls")
 public class BanqueteHallController {
