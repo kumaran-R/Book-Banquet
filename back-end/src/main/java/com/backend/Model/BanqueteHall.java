@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 /**
  * Created by Kumaran on 10/18/2018.
  */
-
+//Brian is cool
 @Document(collection = "halls")
 public class BanqueteHall { //jon is working here
     @Id
