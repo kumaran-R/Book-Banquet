@@ -12,6 +12,61 @@ public class BanqueteHall {
     @Id
     String id;
     String name;
+    String HallType;
+    double costPerHour;
+    String size;
+    int maxTables;
+    int maxChairs;
+    int capacity;
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getHallType() {
+        return HallType;
+    }
+
+    public void setHallType(String hallType) {
+        HallType = hallType;
+    }
+
+    public double getCostPerHour() {
+        return costPerHour;
+    }
+
+    public void setCostPerHour(double costPerHour) {
+        this.costPerHour = costPerHour;
+    }
+
+    public int getMaxTables() {
+        return maxTables;
+    }
+
+    public void setMaxTables(int maxTables) {
+        this.maxTables = maxTables;
+    }
+
+    public int getMaxChairs() {
+        return maxChairs;
+    }
+
+    public void setMaxChairs(int maxChairs) {
+        this.maxChairs = maxChairs;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
 
     public BanqueteHall(String name) {
         this.name = name;
