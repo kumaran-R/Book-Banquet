@@ -5,6 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * Created by Kumaran on 10/18/2018.
+ * james
  */
 //Brian is cool
 @Document(collection = "halls")
