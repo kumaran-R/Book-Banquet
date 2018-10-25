@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 
 @Document(collection = "halls")
-public class BanqueteHall {
+public class BanqueteHall { //jon is working here
     @Id
     String id;
     String name;
