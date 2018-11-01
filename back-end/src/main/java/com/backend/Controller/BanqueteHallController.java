@@ -25,6 +25,11 @@ public class BanqueteHallController {
         return this.banqueteHallRepository.findAll();
     }
 
+    @GetMapping("/{id}")
+    public BanqueteHall getOne(@PathVariable String id){
+        return this.banqueteHallRepository.findById(id).orElse(new BanqueteHall());
+    }
+
     @PutMapping
     public void insert(@RequestBody BanqueteHall b){
         this.banqueteHallRepository.insert(b);
