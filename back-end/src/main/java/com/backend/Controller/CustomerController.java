@@ -25,6 +25,11 @@ public class CustomerController {
         return this.customerRepositoryRepository.findAll();
     }
 
+    @GetMapping("/{id}")
+    public Customer getOne(@PathVariable String id){
+        return this.customerRepositoryRepository.findById(id).orElse(new Customer());
+    }
+
     @PutMapping
     public void insert(@RequestBody Customer b){
         this.customerRepositoryRepository.insert(b);
