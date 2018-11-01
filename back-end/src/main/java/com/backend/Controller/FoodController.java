@@ -21,6 +21,11 @@ public class FoodController {
     @GetMapping("/all")
     public List<Food> getAll(){ return this.foodRepository.findAll(); }
 
+    @GetMapping("/{id}")
+    public Food getOne(@PathVariable String id){
+        return this.foodRepository.findById(id).orElse(new Food());
+    }
+
     @PutMapping
     public void insert(@RequestBody Food b){
         this.foodRepository.insert(b);
