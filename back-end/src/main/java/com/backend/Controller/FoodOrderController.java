@@ -10,7 +10,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/FoodOrder")
+@RequestMapping("/foodOrder")
 public class FoodOrderController {
 
     private FoodOrderRepository foodOrderRepository;
@@ -23,7 +23,7 @@ public class FoodOrderController {
     @GetMapping("/all")
     public List<FoodOrder> getAll(){ return this.foodOrderRepository.findAll();}
 
-    @PutMapping
+    @GetMapping("/{id}")
     public void insert(@RequestBody FoodOrder b){
         this.foodOrderRepository.insert(b);
     }
