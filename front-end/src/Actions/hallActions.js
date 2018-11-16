@@ -1,7 +1,7 @@
 import { ADD_HALL,DELETE_HALL,FETCH_HALL} from './types';
 import axios from 'axios';
 
-const apiUrl = 'http://localhost:4000/halls';
+const apiUrl = 'http://localhost:8080/halls';
 
 export const createPost = ({ body }) => {
     return (dispatch) => {

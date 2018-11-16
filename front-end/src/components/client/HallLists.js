@@ -8,7 +8,6 @@ class HallLists extends Component {
         super(props)
 
         this.state = {
-            hallList: [{name: "A"}, {name: "B"}],
             searchString: ""
         }
     }
@@ -36,7 +35,7 @@ class HallLists extends Component {
         return (
             <div>
                 {
-                    this.state.hallList ? (
+                    this.props.hallReducer.halls ? (
                         <div>
                             <TextField style={{padding:24}}
                                        id="searchInput"
@@ -47,7 +46,7 @@ class HallLists extends Component {
                             />
                             <Grid container spacing={24} style={{padding:24, margin:0, width:"100%"}}>
                                 {
-                                    this.state.hallList.map((hall, index)=> {
+                                    this.props.hallReducer.halls.map((hall, index)=> {
                                         return <Grid item key={index} xs={12} sm={6} lg={4} xl={3}>
                                             <HallCard name={hall.name}/>
                                         </Grid>
