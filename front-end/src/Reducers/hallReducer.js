@@ -1,5 +1,5 @@
 
-import { ADD_HALL, DELETE_HALL, FETCH_HALL } from '../actions/types';
+import { ADD_HALL, DELETE_HALL, FETCH_HALL } from './../Actions/types.js';
 
 export default function hallReducer(state = [], action) {
     switch (action.type) {
