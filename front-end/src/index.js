@@ -8,6 +8,8 @@ import thunk from "redux-thunk";
 import {Provider} from "react-redux"
 import hallReducer from "./Reducers/hallReducer"
 
+
+import BlankComponent from "./components/BlankComponent";
 const allReducers = combineReducers({
     hallReducer: hallReducer
 })
@@ -18,7 +20,7 @@ const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 //console.log(store.getState());
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><BlankComponent /></Provider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux";
-import {createHall} from "./Actions/hallActions.js"
-import AppBar from "./components/AppBar"
-import HallLists from "./components/HallLists.js"
+//import {createHall} from "./Actions/hallActions.js"
+import Routes from "./Routes/Routes.js"
 import axios from "axios"
 class App extends Component {
     constructor(props) {
@@ -13,9 +12,9 @@ class App extends Component {
         };
     }
 
-    componentDidMount(){
+    componentDidMount() {
 
-        axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
+        axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
         axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
         axios.get('http://localhost:8080/halls/all')
             .then(function (response) {
@@ -33,9 +32,7 @@ class App extends Component {
     render() {
         return (
             <div>
-                <AppBar />
-                <HallLists />
-
+                <Routes />
             </div>
         );
     }
@@ -48,7 +45,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch, props) => {
 
     return bindActionCreators({
-        onCreateHall: createHall
+       // onCreateHall: createHall
     }, dispatch)
 
 
