@@ -1,11 +1,11 @@
 import { ADD_HALL,DELETE_HALL,FETCH_HALL} from './types';
 import axios from 'axios';
 
-const apiUrl = 'http://localhost:4000/posts';
+const apiUrl = 'http://localhost:4000/halls';
 
-export const createPost = ({ title, body }) => {
+export const createPost = ({ body }) => {
     return (dispatch) => {
-        return axios.post(`${apiUrl}/add`, {title, body})
+        return axios.post(`${apiUrl}`, {body})
             .then(response => {
                 dispatch(createPostSuccess(response.data))
             })
@@ -37,7 +37,7 @@ export const deletePostSuccess = id => {
 
 export const deletePost = id => {
     return (dispatch) => {
-        return axios.get(`${apiUrl}/delete/${id}`)
+        return axios.delete(`${apiUrl}/${id}`)
             .then(response => {
                 dispatch(deletePostSuccess(response.data))
             })
@@ -56,7 +56,7 @@ export const fetchPosts = (posts) => {
 
 export const fetchAllPosts = () => {
     return (dispatch) => {
-        return axios.get(apiUrl)
+        return axios.get(apiUrl+'/all')
             .then(response => {
                 dispatch(fetchPosts(response.data))
             })

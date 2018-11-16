@@ -6,7 +6,8 @@ const mapDispatchToProps = dispatch => {
     return {
         onAddPost: post => {
             dispatch(createPost(post));
-        }
+        },
+        
     };
 };
 

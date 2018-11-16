@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import AppBar from "../client/AppBar"
-import HallLists from "../client/HallLists.js"
+import HallLists from "../../Containers/hallListContainer.js"
 const styles = theme => ({
     root: {
         flexGrow: 1

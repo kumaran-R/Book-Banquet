@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import HallCard from "./client/HallCard.js"
+import HallCard from "./client/HallCard.js";
+
+
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -10,6 +12,9 @@ const styles = theme => ({
 });
 
 function HallList(props) {
+    
+    
+    
     const {classes, halls} = props;
 
     return (
