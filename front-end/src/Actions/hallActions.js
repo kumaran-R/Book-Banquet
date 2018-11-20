@@ -1,4 +1,4 @@
-import { ADD_HALL,DELETE_HALL,FETCH_HALL, RESET_HALL} from './types';
+import { ADD_HALL,DELETE_HALL,FETCH_HALL, RESET_HALL,FETCH_HALLS} from './types';
 import axios from 'axios';
 
 const apiUrl = 'http://localhost:8080/halls';
@@ -51,7 +51,7 @@ export const fetchHall = id => {
     return (dispatch) => {
         return axios.get(`${apiUrl}/${id}`)
             .then(response => {
-                dispatch(fetchPosts(response.data))
+                dispatch(fetchHallSuccess(response.data))
             })
             .catch(error => {
                 throw(error);
@@ -63,11 +63,17 @@ export const fetchHall = id => {
 
 export const fetchPosts = (posts) => {
     return {
-        type: FETCH_HALL,
+        type: FETCH_HALLS,
         payload:posts
     }
 };
 
+export const fetchHallSuccess = (hall) => {
+    return {
+        type: FETCH_HALL,
+        payload:hall
+    }
+};
 
 
 export const resetHall = () => {

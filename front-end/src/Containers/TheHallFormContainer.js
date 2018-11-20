@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { createPost,resetHall, fetchAllPosts } from './../Actions/hallActions';
+import { createPost,resetHall, fetchAllPosts,fetchHall } from './../Actions/hallActions';
 import AddHall from '../components/admin/AddHall.js';
 
 const mapDispatchToProps = dispatch => {
@@ -12,6 +12,9 @@ const mapDispatchToProps = dispatch => {
         },
         fetchAllHalls :() =>{
             dispatch(fetchAllPosts());
+        },
+        fetchHall :(id) =>{
+            dispatch(fetchHall(id));
         },
         
     };

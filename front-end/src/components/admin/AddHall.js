@@ -24,10 +24,13 @@ class AddHall extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            date:'',
-            time:'',
+            hallId: "",
+            updateHall: false,
+            viewMode: false,
+            date: '',
+            time: '',
             name: "",
-            HallType: "",
+            hallType: "",
             costPerHour: "",
             size: "",
             maxTables: "",
@@ -37,6 +40,16 @@ class AddHall extends Component {
     }
 
     componentDidMount() {
+        this.props.resetHall();
+        if (this.props.viewMode && this.props.hallId) {
+            this.setState({
+                viewMode: true,
+                updateHall: true,
+                hallId: this.props.hallId
+            })
+
+            this.props.fetchHall(this.props.hallId)
+        }
 
     }
 
@@ -47,25 +60,52 @@ class AddHall extends Component {
             this.props.fetchAllHalls();
             this.props.closeDialog();
         }
+
+        if (nextProps.hallReducer.hall) {
+            this.state.name = nextProps.hallReducer.hall.name
+            this.state.hallType = nextProps.hallReducer.hall.hallType
+        }
     }
 
 
     handleChange(name, event) {
         this.setState({
-            [name]: event.target.value,
+            [name]: event.target.value
         });
+    }
+
+    enableEdit() {
+        this.setState({
+            viewMode: false
+        })
+    }
+
+    componentWillUnmount() {
+        this.props.resetHall();
     }
 
 
     onSubmit() {
-        let req = {
-            name: this.state.name,
-            HallType: this.state.HallType
+        let req = {}
+        if (this.state.updateHall) {
+            req = {
+                id: this.state.hallId,
+                name: this.state.name,
+                hallType: this.state.hallType
+            }
         }
+        if (!this.state.updateHall) {
+            req = {
+                name: this.state.name,
+                hallType: this.state.hallType
+            }
+        }
+
         this.props.onAddPost(req)
 
 
     }
+
     onChangeDate = (date:Date) => {
         console.log('Date: ', date)
         this.setState({date})
@@ -76,147 +116,174 @@ class AddHall extends Component {
     }
 
     render() {
+
         return (
+
             <Grid container spacing={24} justify="center" alignItems="center"
                   style={{padding:24, margin:0, width:"100%"}}>
-                <Grid item xs={6}>
-                    <Paper>
-                        <Grid container spacing={24} justify="center" alignItems="center"
-                              style={{padding:24, margin:0, width:"100%"}}>
-                            <Typography component="h2" variant="h3" align="center" color="primary">
-                                Add Room
-                            </Typography>
-                            <Grid item xs={12}>
+                <Grid item xs={12}>
+                    {/**<Paper> **/}
+                    <Grid container spacing={24} justify="center" alignItems="center"
+                          style={{padding:24, margin:0, width:"100%"}}>
+                        <Typography variant="display2" align="center" color="primary">
+                            {this.state.updateHall ? "Update Hall" : "Add Hall"}
+                        </Typography>
+                        <Grid item xs={12}>
 
-                                {/**
+                            {/**
 
-                                 <div>
-                                 <DateFormatInput name='date-input' value={this.state.date} onChange={this.onChangeDate.bind(this)}/>
-                                 <TimeFormatInput name='time-input' value={this.state.time} onChange={this.onChangeTime.bind(this)}/>
-                                 </div>
-                                 **/}
+                             <div>
+                             <DateFormatInput name='date-input' value={this.state.date} onChange={this.onChangeDate.bind(this)}/>
+                             <TimeFormatInput name='time-input' value={this.state.time} onChange={this.onChangeTime.bind(this)}/>
+                             </div>
+                             **/}
 
-                                <TextField
-                                    id="RoomName"
-                                    label="Room name"
-                                    margin="normal"
-                                    fullWidth
-                                    required
-                                    variant="outlined"
-                                    value={this.state.name}
-                                    InputLabelProps={{ required: true }}
-                                    onChange={this.handleChange.bind(this, 'name')}
-                                />
-
-                            </Grid>
-                            <Grid item xs={12}>
-                                <FormControl component="fieldset" variant="outlined">
-                                    <FormLabel component="legend">Hall Type</FormLabel>
-                                    <RadioGroup row
-                                                aria-label="Hall Type"
-                                                name="gender2"
-                                                direction="row"
-                                                value={this.state.HallType}
-                                                onChange={this.handleChange.bind(this,'HallType')}
-                                    >
-                                        <FormControlLabel
-                                            value="Type 1"
-                                            control={<Radio color="primary" />}
-                                            label="Type 1"
-                                            labelPlacement="end"
-
-                                        />
-                                        <FormControlLabel
-                                            value="Type 2"
-                                            control={<Radio color="primary" />}
-                                            label="type 2"
-                                            labelPlacement="end"
-
-                                        />
-                                        <FormControlLabel
-                                            value="Type 3"
-                                            control={<Radio color="primary" />}
-                                            label="type 3"
-                                            labelPlacement="end"
-
-                                        />
-                                    </RadioGroup>
-                                </FormControl>
-
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    id="Cost"
-                                    label="Cost Per Hour(Dollars)"
-                                    margin="normal"
-                                    fullWidth
-                                    variant="outlined"
-                                    value={this.state.costPerHour}
-                                    onChange={this.handleChange.bind(this, 'costPerHour')}
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    id="Size"
-                                    label="Size(square feet)"
-                                    type="number"
-                                    margin="normal"
-                                    fullWidth
-                                    variant="outlined"
-                                    value={this.state.size}
-                                    onChange={this.handleChange.bind(this, 'size')}
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    id="Maxtables"
-                                    label="Max Tables"
-                                    type="number"
-                                    margin="normal"
-                                    fullWidth
-                                    variant="outlined"
-                                    value={this.state.maxTables}
-                                    onChange={this.handleChange.bind(this, 'maxTables')}
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    id="Maxchairs"
-                                    label="Max Chairs"
-                                    type="number"
-                                    margin="normal"
-                                    fullWidth
-                                    variant="outlined"
-                                    value={this.state.maxChairs}
-                                    onChange={this.handleChange.bind(this, 'maxChairs')}
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    id="Capacity"
-                                    type="number"
-                                    label="Capacity"
-                                    margin="normal"
-                                    fullWidth
-                                    variant="outlined"
-                                    value={this.state.capacity}
-                                    onChange={this.handleChange.bind(this, 'capacity')}
-                                />
-                            </Grid>
-                            <Grid item xs={6}>
-                                <Button variant="contained" color="secondary" fullWidth>
-                                    Cancel
-                                </Button>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <Button onClick={this.onSubmit.bind(this)} variant="contained" color="primary"
-                                        fullWidth>
-                                    Create
-                                </Button>
-                            </Grid>
+                            <TextField
+                                id="RoomName"
+                                label="Room name"
+                                margin="normal"
+                                fullWidth
+                                variant="outlined"
+                                value={this.state.name}
+                                onChange={this.handleChange.bind(this, 'name')}
+                                InputProps={{readOnly: this.state.viewMode  }}
+                            />
 
                         </Grid>
-                    </Paper>
+                        <Grid item xs={12}>
+                            <FormControl component="fieldset" variant="outlined">
+                                <FormLabel component="legend">Hall Type</FormLabel>
+                                <RadioGroup row
+                                            aria-label="Hall Type"
+                                            name="gender2"
+                                            direction="row"
+                                            value={this.state.hallType}
+                                            onChange={this.handleChange.bind(this,'hallType')}
+
+                                >
+                                    <FormControlLabel
+                                        value="Type 1"
+                                        control={<Radio disabled={this.state.viewMode} color="primary" />}
+                                        label="Type 1"
+                                        labelPlacement="end"
+
+                                    />
+                                    <FormControlLabel
+                                        value="Type 2"
+                                        control={<Radio disabled={this.state.viewMode} color="primary" />}
+                                        label="type 2"
+                                        labelPlacement="end"
+
+                                    />
+                                    <FormControlLabel
+                                        value="Type 3"
+                                        control={<Radio disabled={this.state.viewMode} color="primary" />}
+                                        label="type 3"
+                                        labelPlacement="end"
+
+                                    />
+                                </RadioGroup>
+                            </FormControl>
+
+                        </Grid>
+                        <Grid item xs={6}>
+                            <TextField
+                                id="Cost"
+                                label="Cost Per Hour(Dollars)"
+                                margin="normal"
+                                fullWidth
+                                variant="outlined"
+                                value={this.state.costPerHour}
+                                onChange={this.handleChange.bind(this, 'costPerHour')}
+                                InputProps={{readOnly: this.state.viewMode}}
+                            />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <TextField
+                                id="Size"
+                                label="Size(square feet)"
+                                type="number"
+                                margin="normal"
+                                fullWidth
+                                variant="outlined"
+                                value={this.state.size}
+                                onChange={this.handleChange.bind(this, 'size')}
+                                InputProps={{
+            readOnly: this.state.viewMode,
+          }}
+                            />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <TextField
+                                id="Maxtables"
+                                label="Max Tables"
+                                type="number"
+                                margin="normal"
+                                fullWidth
+                                variant="outlined"
+                                value={this.state.maxTables}
+                                onChange={this.handleChange.bind(this, 'maxTables')}
+                                InputProps={{
+            readOnly: this.state.viewMode,
+          }}
+                            />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <TextField
+                                id="Maxchairs"
+                                label="Max Chairs"
+                                type="number"
+                                margin="normal"
+                                fullWidth
+                                variant="outlined"
+                                value={this.state.maxChairs}
+                                onChange={this.handleChange.bind(this, 'maxChairs')}
+                                InputProps={{
+            readOnly: this.state.viewMode,
+          }}
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                id="Capacity"
+                                type="number"
+                                label="Capacity"
+                                margin="normal"
+                                fullWidth
+                                variant="outlined"
+                                value={this.state.capacity}
+                                onChange={this.handleChange.bind(this, 'capacity')}
+                                InputProps={{
+            readOnly: this.state.viewMode,
+          }}
+                            />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Button variant="contained" color="secondary" onClick={this.props.closeDialog.bind(this)}
+                                    fullWidth>
+                                Cancel
+                            </Button>
+                        </Grid>
+                        <Grid item xs={6}>
+                            {
+                                (this.state.updateHall && this.state.viewMode) &&
+                                <Button onClick={this.enableEdit.bind(this)} variant="contained" color="primary"
+                                        fullWidth>
+                                    Edit
+                                </Button>
+                            }
+                            {
+                                !this.state.viewMode &&
+                                <Button onClick={this.onSubmit.bind(this)} variant="contained" color="primary"
+                                        fullWidth>
+                                    {this.state.updateHall ? "Update" : "Create"}
+                                </Button>
+                            }
+
+                        </Grid>
+
+                    </Grid>
+                    {/**</Paper>**/}
                 </Grid>
 
 

@@ -3,3 +3,4 @@ export const DELETE_HALL = 'DELETE_HALL';
 export const RESET_HALL = 'RESET_HALL';
 
 export const FETCH_HALL = 'FETCH_HAll';
+export const FETCH_HALLS = 'FETCH_HAllS';

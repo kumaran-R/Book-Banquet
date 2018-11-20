@@ -35,7 +35,9 @@ class HallLists extends Component {
 
         this.state = {
             searchString: "",
-            newHallopen: false
+            newHallopen: false,
+            currentHallId: "",
+            hallViewMode: false
         }
     }
 
@@ -58,17 +60,34 @@ class HallLists extends Component {
     }
 
 
-    AddNewHall() {
+    addNewHall() {
+        this.setState({
+            currentHallId: '',
+            hallViewMode: false
+        })
 
+        this.handleClickAddNewHallOpen()
     }
 
     handleClickAddNewHallOpen = () => {
+
         this.setState({newHallopen: true});
     };
 
     handleClickAddNewHallClose = () => {
         this.setState({newHallopen: false});
     };
+
+    viewHall(id) {
+        this.setState({
+            currentHallId: id,
+            hallViewMode: true
+        })
+
+        this.handleClickAddNewHallOpen();
+
+        console.log(id)
+    }
 
 
     render() {
@@ -79,45 +98,51 @@ class HallLists extends Component {
                 {
                     this.props.hallReducer.halls ? (
 
-                            <Grid container spacing={24} style={{padding:24, margin:0, width:"100%"}}>
-                                {
-                                    this.props.hallReducer.halls.map((hall, index)=> {
-                                        return <Grid item key={index} xs={12} sm={6} lg={4} xl={3}>
-                                            <HallCard name={hall.name}/>
-                                        </Grid>
+                        <Grid container spacing={24} style={{padding:24, margin:0, width:"100%"}}>
+                            {
+                                this.props.hallReducer.halls.map((hall, index)=> {
+                                    return <Grid item key={index} xs={6} sm={4} lg={3} xl={2}>
+                                        <HallCard viewHall={this.viewHall.bind(this)} hall={hall}/>
+                                    </Grid>
 
 
-                                    })
-                                }
-                            </Grid>
+                                })
+                            }
+                        </Grid>
 
                     ) : "NO Halls Found..........!!!!!!!!!"
                 }
 
-                <Button variant="fab" onClick={this.handleClickAddNewHallOpen.bind(this)} className={classes.fab}
+                <Button variant="fab" onClick={this.addNewHall.bind(this)} className={classes.fab}
                         color="primary">
                     <AddIcon />
                 </Button>
 
                 <Dialog
-                    fullScreen
+                    // fullScreen
                     open={this.state.newHallopen}
                     onClose={this.handleClickAddNewHallClose}
-                    TransitionComponent={Transition}
+                    // TransitionComponent={Transition}
                 >
+                    {/**
 
-                    <AppBar position="relative" className={classes.appBar}>
-                        <Toolbar>
-                            <IconButton color="inherit" onClick={this.handleClickAddNewHallClose}
-                                        aria-label="Close">
-                                <CloseIcon />
-                            </IconButton>
-                        </Toolbar>
-                    </AppBar><Grid container style={{padding:5, margin:0, width:"100%"}}>
-                    <Grid item xs={12} style={{padding:24, margin:0, width:"100%"}}>
-                        <TheHallFormContainer closeDialog={this.handleClickAddNewHallClose.bind(this)}/>
-                    </Grid>
-                </Grid>
+                     <AppBar position="relative" className={classes.appBar}>
+                     <Toolbar>
+                     <IconButton color="inherit" onClick={this.handleClickAddNewHallClose}
+                     aria-label="Close">
+                     <CloseIcon />
+                     </IconButton>
+                     </Toolbar>
+                     </AppBar><Grid container style={{padding:5, margin:0, width:"100%"}}>
+                     <Grid item xs={12} style={{padding:24, margin:0, width:"100%"}}>
+                     **/}
+
+                    <TheHallFormContainer hallId={this.state.currentHallId} viewMode={this.state.hallViewMode}
+                                          closeDialog={this.handleClickAddNewHallClose.bind(this)}/>
+                    {/**
+                     </Grid>
+                     </Grid>
+                     **/}
                 </Dialog>
             </Grid>
         )

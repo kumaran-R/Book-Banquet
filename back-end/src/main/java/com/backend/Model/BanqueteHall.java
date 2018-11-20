@@ -13,7 +13,7 @@ public class BanqueteHall { //jon is working here
     @Id
     String id;
     String name;
-    String HallType;
+    String hallType;
     double costPerHour;
     String size;
     int maxTables;
@@ -29,11 +29,11 @@ public class BanqueteHall { //jon is working here
     }
 
     public String getHallType() {
-        return HallType;
+        return hallType;
     }
 
     public void setHallType(String hallType) {
-        HallType = hallType;
+        this.hallType = hallType;
     }
 
     public double getCostPerHour() {
