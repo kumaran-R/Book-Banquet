@@ -4,7 +4,6 @@ import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import HallCard from "./client/HallCard.js";
 
-
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -30,8 +29,9 @@ function HallList(props) {
                        
                     })
                 }
-               
+
             </Grid>
+            
         </div>
     );
 }

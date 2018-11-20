@@ -1,14 +1,41 @@
 import React, {Component} from "react";
 import Grid from '@material-ui/core/Grid';
+import PropTypes from 'prop-types';
+import {withStyles} from '@material-ui/core/styles';
 import TextField from "@material-ui/core/TextField"
 import HallCard from "./HallCard.js";
+import Button from "@material-ui/core/Button"
+import AddIcon from '@material-ui/icons/Add'
+import Dialog from '@material-ui/core/Dialog'
+import CloseIcon from '@material-ui/icons/Close';
+import Slide from '@material-ui/core/Slide';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import TheHallFormContainer from '../../Containers/TheHallFormContainer.js'
+const styles = theme => ({
+    root: {
+        flexGrow: 1,
+    },
+    fab: {
+        position: 'fixed',
+        bottom: theme.spacing.unit * 2,
+        right: theme.spacing.unit * 2,
+    },
+});
+
+function Transition(props) {
+    return <Slide direction="up" {...props} />;
+}
+
 class HallLists extends Component {
 
     constructor(props) {
         super(props)
 
         this.state = {
-            searchString: ""
+            searchString: "",
+            newHallopen: false
         }
     }
 
@@ -31,19 +58,27 @@ class HallLists extends Component {
     }
 
 
+    AddNewHall() {
+
+    }
+
+    handleClickAddNewHallOpen = () => {
+        this.setState({newHallopen: true});
+    };
+
+    handleClickAddNewHallClose = () => {
+        this.setState({newHallopen: false});
+    };
+
+
     render() {
+        let {classes} = this.props;
         return (
-            <div>
+            <Grid container spacing={24} style={{padding:24, margin:0, width:"100%"}}>
+
                 {
                     this.props.hallReducer.halls ? (
-                        <div>
-                            <TextField style={{padding:24}}
-                                       id="searchInput"
-                                       placeholder="Search for Halls"
-                                       margin="normal"
-                                       onChange={this.onSearchInputChange.bind(this)}
 
-                            />
                             <Grid container spacing={24} style={{padding:24, margin:0, width:"100%"}}>
                                 {
                                     this.props.hallReducer.halls.map((hall, index)=> {
@@ -55,14 +90,44 @@ class HallLists extends Component {
                                     })
                                 }
                             </Grid>
-                        </div>
+
                     ) : "NO Halls Found..........!!!!!!!!!"
                 }
-            </div>
+
+                <Button variant="fab" onClick={this.handleClickAddNewHallOpen.bind(this)} className={classes.fab}
+                        color="primary">
+                    <AddIcon />
+                </Button>
+
+                <Dialog
+                    fullScreen
+                    open={this.state.newHallopen}
+                    onClose={this.handleClickAddNewHallClose}
+                    TransitionComponent={Transition}
+                >
+
+                    <AppBar position="relative" className={classes.appBar}>
+                        <Toolbar>
+                            <IconButton color="inherit" onClick={this.handleClickAddNewHallClose}
+                                        aria-label="Close">
+                                <CloseIcon />
+                            </IconButton>
+                        </Toolbar>
+                    </AppBar><Grid container style={{padding:5, margin:0, width:"100%"}}>
+                    <Grid item xs={12} style={{padding:24, margin:0, width:"100%"}}>
+                        <TheHallFormContainer closeDialog={this.handleClickAddNewHallClose.bind(this)}/>
+                    </Grid>
+                </Grid>
+                </Dialog>
+            </Grid>
         )
 
     }
 
 
 }
-export default HallLists;
+HallLists.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(HallLists);

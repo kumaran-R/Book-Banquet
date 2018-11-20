@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -21,27 +21,36 @@ const styles = {
     },
 };
 
-function ButtonAppBar(props) {
-    const { classes } = props;
-    return (
-        <div className={classes.root}>
-            <AppBar position="static">
-                <Toolbar>
-                    <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" color="inherit" className={classes.grow}>
-                        News
-                    </Typography>
-                    <Button color="inherit">Login</Button>
-                </Toolbar>
-            </AppBar>
-        </div>
-    );
+
+class MyAppBar extends Component{
+    constructor(props){
+        super(props);
+    }
+
+    render(){
+        const { classes } = this.props;
+        return (
+            <div className={classes.root}>
+                <AppBar position="fixed">
+                    <Toolbar>
+                        <IconButton className={classes.menuButton} onClick={this.props.toggleDrawer.bind(this,true)} color="inherit" aria-label="Menu">
+                            <MenuIcon />
+                        </IconButton>
+                        <Typography variant="h6" color="inherit" className={classes.grow}>
+                            News
+                        </Typography>
+                        <Button color="inherit">Login</Button>
+                    </Toolbar>
+                </AppBar>
+            </div>
+        );
+    }
+
 }
 
-ButtonAppBar.propTypes = {
+
+MyAppBar.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ButtonAppBar);
+export default withStyles(styles)(MyAppBar);

@@ -11,7 +11,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
-
+import {DateFormatInput, TimeFormatInput} from 'material-ui-next-pickers'
 
 const styles = theme => ({
     root: {
@@ -24,6 +24,8 @@ class AddHall extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            date:'',
+            time:'',
             name: "",
             HallType: "",
             costPerHour: "",
@@ -33,64 +35,113 @@ class AddHall extends Component {
             capacity: ""
         };
     }
-    handleChange(name, event){
+
+    componentDidMount() {
+
+    }
+
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.hallReducer.createStatus) {
+            this.props.resetHall();
+            this.props.fetchAllHalls();
+            this.props.closeDialog();
+        }
+    }
+
+
+    handleChange(name, event) {
         this.setState({
-        [name]:event.target.value,
+            [name]: event.target.value,
         });
     }
-    render(){
-        return(
-            <Grid container spacing={24} justify="center" alignItems="center" style={{padding:24, margin:0, width:"100%"}}>
-                <Grid item xs={6} >
+
+
+    onSubmit() {
+        let req = {
+            name: this.state.name,
+            HallType: this.state.HallType
+        }
+        this.props.onAddPost(req)
+
+
+    }
+    onChangeDate = (date:Date) => {
+        console.log('Date: ', date)
+        this.setState({date})
+    }
+    onChangeTime = (time:Date) => {
+        console.log('Time: ', time)
+        this.setState({time})
+    }
+
+    render() {
+        return (
+            <Grid container spacing={24} justify="center" alignItems="center"
+                  style={{padding:24, margin:0, width:"100%"}}>
+                <Grid item xs={6}>
                     <Paper>
-                        <Grid container spacing={24} justify="center" alignItems="center" style={{padding:24, margin:0, width:"100%"}}>
-                             <Typography component="h2" variant = "h3" align ="center" color = "primary" >
-                              Add Room
-                             </Typography>
-                             <Grid item xs={12}>
-                                    <TextField
-                                        id="RoomName"
-                                        label="Room name"
-                                        margin="normal"
-                                        fullWidth
-                                        variant="outlined"
-                                        value={this.state.name}
-                                        onChange={this.handleChange.bind(this, 'name')}
-                                    />
-                             </Grid>
-                             <Grid item xs={12}>
-                                 <FormControl component="fieldset" variant="outlined">
-                                     <FormLabel component="legend">Hall Type</FormLabel>
-                                 <RadioGroup row
-                                     aria-label="Hall Type"
-                                     name="gender2"
-                                     direction="row"
-                                     value={this.state.HallType}
-                                     onChange={this.handleChange.bind(this,'HallType')}
-                                 >
-                                     <FormControlLabel
-                                         value="Type 1"
-                                         control={<Radio color="primary" />}
-                                         label="Type 1"
-                                         labelPlacement="end"
+                        <Grid container spacing={24} justify="center" alignItems="center"
+                              style={{padding:24, margin:0, width:"100%"}}>
+                            <Typography component="h2" variant="h3" align="center" color="primary">
+                                Add Room
+                            </Typography>
+                            <Grid item xs={12}>
 
-                                     />
-                                     <FormControlLabel
-                                         value="Type 2"
-                                         control={<Radio color="primary" />}
-                                         label="type 2"
-                                         labelPlacement="end"
+                                {/**
 
-                                     />
-                                     <FormControlLabel
-                                         value="Type 3"
-                                         control={<Radio color="primary" />}
-                                         label="type 3"
-                                         labelPlacement="end"
+                                 <div>
+                                 <DateFormatInput name='date-input' value={this.state.date} onChange={this.onChangeDate.bind(this)}/>
+                                 <TimeFormatInput name='time-input' value={this.state.time} onChange={this.onChangeTime.bind(this)}/>
+                                 </div>
+                                 **/}
 
-                                     />
-                                 </RadioGroup>
-                                 </FormControl>
+                                <TextField
+                                    id="RoomName"
+                                    label="Room name"
+                                    margin="normal"
+                                    fullWidth
+                                    required
+                                    variant="outlined"
+                                    value={this.state.name}
+                                    InputLabelProps={{ required: true }}
+                                    onChange={this.handleChange.bind(this, 'name')}
+                                />
+
+                            </Grid>
+                            <Grid item xs={12}>
+                                <FormControl component="fieldset" variant="outlined">
+                                    <FormLabel component="legend">Hall Type</FormLabel>
+                                    <RadioGroup row
+                                                aria-label="Hall Type"
+                                                name="gender2"
+                                                direction="row"
+                                                value={this.state.HallType}
+                                                onChange={this.handleChange.bind(this,'HallType')}
+                                    >
+                                        <FormControlLabel
+                                            value="Type 1"
+                                            control={<Radio color="primary" />}
+                                            label="Type 1"
+                                            labelPlacement="end"
+
+                                        />
+                                        <FormControlLabel
+                                            value="Type 2"
+                                            control={<Radio color="primary" />}
+                                            label="type 2"
+                                            labelPlacement="end"
+
+                                        />
+                                        <FormControlLabel
+                                            value="Type 3"
+                                            control={<Radio color="primary" />}
+                                            label="type 3"
+                                            labelPlacement="end"
+
+                                        />
+                                    </RadioGroup>
+                                </FormControl>
 
                             </Grid>
                             <Grid item xs={12}>
@@ -153,21 +204,20 @@ class AddHall extends Component {
                                 />
                             </Grid>
                             <Grid item xs={6}>
-                            <Button variant="contained" color="secondary" fullWidth>
-                                Cancel
-                            </Button>
+                                <Button variant="contained" color="secondary" fullWidth>
+                                    Cancel
+                                </Button>
                             </Grid>
                             <Grid item xs={6}>
-                            <Button variant="contained" color="primary" fullWidth>
-                                Create
-                            </Button>
+                                <Button onClick={this.onSubmit.bind(this)} variant="contained" color="primary"
+                                        fullWidth>
+                                    Create
+                                </Button>
                             </Grid>
 
                         </Grid>
                     </Paper>
                 </Grid>
-
-
 
 
             </Grid>
