@@ -224,7 +224,6 @@ handleChange(name,event){
 
                     </Grid>
 
-                  </Grid>
 
                 </Grid>
               </Paper>
