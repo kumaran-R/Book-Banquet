@@ -7,6 +7,9 @@ import Typography from "@material-ui/core/Typography/Typography";
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import List from '@material-ui/core/List';
+import HallDetails from "./HallDetails";
+import FoodDetails from "./FoodDetails";
+import CustomerDetails from "./CustomerDetails";
 
 
 const styles = theme => ({
@@ -23,60 +26,14 @@ class Reservation extends Component {
     }
 
     render(){
+
         return(
             <Grid container spacing={24} justify="center" alignItems="center" style={{padding:24, margin:0, width:"100%"}}>
                 <Grid item xs={6}>
-                    <Paper>
-                        <Grid container spacing={24} justify="center" alignItems="center" style={{padding:24, margin:0, width:"100%"}}>
-                            <Grid item xs={12}>
-                                <Typography component="h2" variant = "h3" align ="center" color = "primary" >
-                                        Reservation
-                                </Typography>
-                            </Grid>
+                    <HallDetails/>
+                    <FoodDetails/>
+                    <CustomerDetails/>
 
-                            <Grid item xs={12}>
-                                <List>
-                                     <ListItem>
-                                         <ListItemText primary="Banquet Hall" secondary="Hall Name"/>
-                                     </ListItem>
-                                    <ListItem>
-                                    <ListItemText primary="Person Count" secondary="#"/>
-                                </ListItem>
-                                <ListItem>
-                                    <ListItemText primary="Table Count" secondary="#"/>
-                                </ListItem>
-                                <ListItem>
-                                    <ListItemText primary="Chair Count" secondary="#"/>
-                                </ListItem>
-                                <ListItem>
-                                    <ListItemText primary="Service/Requests" secondary="Insert Request"/>
-                                </ListItem>
-                                <ListItem>
-                                    <ListItemText primary="Food Requests" secondary="Insert Request"/>
-                                </ListItem>
-                                    <ListItem>
-                                        <ListItemText primary="Food Order" secondary="Order"/>
-                                    </ListItem>
-                                <ListItem>
-                                    <ListItemText primary="Customer Name" secondary="Name"/>
-                                </ListItem>
-                                <ListItem>
-                                    <ListItemText primary="Start Date" secondary="date"/>
-                                </ListItem>
-                                <ListItem>
-                                    <ListItemText primary="End Date" secondary="date"/>
-                                </ListItem>
-                                <ListItem>
-                                    <ListItemText primary="Total" secondary="total"/>
-                                </ListItem>
-                                <ListItem>
-                                    <ListItemText primary="Down Payment" secondary="down"/>
-                                </ListItem>
-
-                            </List>
-                            </Grid>
-                        </Grid>
-                    </Paper>
                 </Grid>
 
             </Grid>
