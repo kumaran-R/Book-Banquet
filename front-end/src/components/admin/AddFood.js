@@ -32,6 +32,61 @@ const styles = theme => ({
     }
 });
 
+const FType = [
+  {
+    value: 'Vegetables',
+    label: 'Vegetables',
+  },
+  {
+    value: 'Fruit',
+    label: 'Fruit',
+  },
+  {
+    value: 'Meat',
+    label: 'Meat',
+  },
+  {
+    value: 'Grain',
+    label: 'Grain',
+  },
+  {
+    value: 'Chicken',
+    label: 'Chicken',
+  },
+  {
+    value: 'Seafood',
+    label: 'Seafood',
+  },
+  {
+    value: 'Eggs',
+    label: 'Eggs',
+  }
+];
+
+const TType = [
+  {
+    value: 'Sweet',
+    label: 'Sweet',
+  },
+  {
+    value: 'Spicy',
+    label: 'Spicy',
+  },
+  {
+    value: 'Sour',
+    label: 'Sour',
+  },
+  {
+    value: 'Bitter',
+    label: 'Bitter',
+  },
+  {
+    value: 'Salty',
+    label: 'Salty',
+  }
+];
+
+
 
 
 class AddFood extends Component {
@@ -165,40 +220,58 @@ handleChange(name,event){
                       InputProps={{readOnly: this.state.viewMode  }}
                     />
                     </Grid>
-                      <Grid item xs={12} alignItems="flex-end">
-                        <FormLabel component="legend">Food Type</FormLabel>
-                        <RadioGroup
-                        aria-label="Gender"
-                        name="FoodType"
-                        direction="row"
-                        value={this.state.foodType}
-                        onChange={this.handleChange.bind(this,'foodType')}
-                        >
-                        <FormControlLabel value="Vegetables"  control={<Radio />} label="Vegetables" />
-                        <FormControlLabel value="Fruit" control={<Radio />} label="Fruit" />
-                        <FormControlLabel value="Meat" control={<Radio />}  label="Meat" />
-                        <FormControlLabel value="Grain" control={<Radio />}label="Grain" />
-                        <FormControlLabel value="Chicken" control={<Radio />} label="Chicken" />
-                        <FormControlLabel value="Seafood" control={<Radio />}  label="Seafood" />
-                        <FormControlLabel value="Eggs" control={<Radio />} label="Eggs" />
-                        </RadioGroup>
+                      <Grid item xs={6} alignItems="flex-end">
+                        <TextField
+                          id="filled-select-currency-native"
+                          select
+                          helperText="Food Type"
+                          className={classes.textField}
+                          value={this.state.foodType}
+                          onChange={this.handleChange.bind(this,'foodType')}
+                          SelectProps={{
+                            native: true,
+                            MenuProps: {
+                            className: classes.menu,
+                            },
+                          }}
+                          fullWidth
+                          margin="normal"
+                          variant="filled"
+                          >
+                          {FType.map(option => (
+                            <option key={option.value} value={option.value}>
+                              {option.label}
+                            </option>
+                          ))}
+                        </TextField>
 
                       </Grid>
 
-                      <Grid item xs={12} alignItems="flex-end">
-                        <FormLabel component="legend">Taste Type</FormLabel>
-                        <RadioGroup
-                        aria-label="Gender"
-                        name="TasteType"
-                        value={this.state.tasteType}
-                        onChange={this.handleChange.bind(this,'tasteType')}
-                        >
-                        <FormControlLabel value="Sweet" control={<Radio />} label="Sweet" />
-                        <FormControlLabel value="Spicy" control={<Radio />} label="Spicy" />
-                        <FormControlLabel value="Sour" control={<Radio />} label="Sour" />
-                        <FormControlLabel value="Bitter" control={<Radio />} label="Bitter" />
-                        <FormControlLabel value="Salty" control={<Radio />} label="Salty" />
-                        </RadioGroup>
+                      <Grid item xs={6} alignItems="flex-end">
+                        <TextField
+                          id="filled-select-currency-native"
+                          select
+                          helperText="Taste Type"
+                          className={classes.textField}
+                          value={this.state.tasteType}
+                          onChange={this.handleChange.bind(this,'tasteType')}
+                          SelectProps={{
+                            native: true,
+                            MenuProps: {
+                            className: classes.menu,
+                            },
+                          }}
+                          fullWidth
+                          margin="normal"
+                          variant="filled"
+                          >
+                          {TType.map(option => (
+                            <option key={option.value} value={option.value}>
+                              {option.label}
+                            </option>
+                          ))}
+                        </TextField>
+
 
                       </Grid>
 
