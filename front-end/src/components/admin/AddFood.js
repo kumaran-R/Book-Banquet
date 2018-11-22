@@ -14,7 +14,33 @@ import RadioGroup from '@material-ui/core/RadioGroup'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormControl from '@material-ui/core/FormControl'
 import FormLabel from '@material-ui/core/FormControl'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import purple from '@material-ui/core/colors/purple';
+import green from '@material-ui/core/colors/green';
 
+const theme = createMuiTheme({
+  palette: {
+    primary: purple,
+    secondary: green,
+  },
+
+  overrides: {
+    // Name of the component ⚛️ / style sheet
+    MuiButton: {
+      // Name of the rule
+      root: {
+        // Some CSS
+        background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+        borderRadius: 3,
+        border: 0,
+        color: 'white',
+        height: 48,
+        padding: '0 30px',
+        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+      },
+    },
+  },
+});
 
 const styles = theme => ({
     root: {
@@ -98,8 +124,8 @@ class AddFood extends Component {
           foodType:'Vegetables',
           tasteType:'',
           viewMode: false,
-          updateFood: false
-
+          updateFood: false,
+          backG:'green'
 
         };
     }
@@ -108,14 +134,14 @@ class AddFood extends Component {
 
     componentDidMount() {
         this.props.resetFood();
-        if (this.props.viewMode && this.props.foodId) {
+        if (this.props.viewMode && this.props.id) {
             this.setState({
                 viewMode: true,
                 updateFood: true,
                 id: this.props.id
             })
 
-            this.props.fetchFood(this.props.foodId)
+            this.props.fetchFood(this.props.id)
         }
 
     }
@@ -194,7 +220,8 @@ handleChange(name,event){
       let {classes} = this.props;
 
         return(
-            <Grid container spacing={24} justify="center" alignItems="center" style={{padding:24, margin:0, width:"100%"}} className="main">
+          <MuiThemeProvider theme={theme}>
+            <Grid container spacing={24} justify="center" alignItems="center" style={{padding:24, margin:0, width:"100%"}} className="main" style={this.state.backG} >
 
             <Grid item xs={12} sm={12} lg={12}>
 
@@ -228,7 +255,6 @@ handleChange(name,event){
                           className={classes.textField}
                           value={this.state.foodType}
                           onChange={this.handleChange.bind(this,'foodType')}
-                          InputProps={{readOnly: this.state.viewMode  }}
                           SelectProps={{
                             native: true,
                             MenuProps: {
@@ -255,7 +281,6 @@ handleChange(name,event){
                           helperText="Taste Type"
                           className={classes.textField}
                           value={this.state.tasteType}
-                          InputProps={{readOnly: this.state.viewMode  }}
                           onChange={this.handleChange.bind(this,'tasteType')}
                           SelectProps={{
                             native: true,
@@ -302,10 +327,11 @@ handleChange(name,event){
                         }
 
                     </Grid>
-            </Grid>
-                </Grid>
+                  </Grid>
                 </Grid>
 
+                </Grid>
+            </MuiThemeProvider>
 
 
 
