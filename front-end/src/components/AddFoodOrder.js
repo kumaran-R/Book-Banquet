@@ -34,48 +34,47 @@ class AddFoodOrder extends Component {
 
     render() {
         return (
-            <Grid container spacing={24} justify="center" alignItems="center"
-                  style={{padding:24, margin:0, width:"100%"}}>
+            <Grid container spacing={24} style={{padding:0, margin:0, width:"100%"}}>
 
-                <Grid item xs={4}>
+              <Grid item xs={3}>
+                <Typography align="center" variant="h4" gutterBottom>
+                  Add Food Order
+                </Typography>
+              </Grid>
 
-                  <Card>
+              <Grid item xs={3}>
+                <FormControl variant="filled">
+                <InputLabel>Food</InputLabel>
+                <Select native
+                  value={this.state.food}
+                  input={<FilledInput name="food"
+                  id="food"
+                  onChange={this.handleChange.bind(this, "food")} />}
+                  >
+                  <option value="" />
+                  <option value={10}>Food a</option>
+                  <option value={20}>Food b</option>
+                  <option value={30}>Food c</option>
+                  </Select>
+                </FormControl>
+              </Grid>
 
-                    <CardContent align="center">
-                      <Typography align="center" variant="h4" gutterBottom>
-                        Add Food Order
-                      </Typography>
+              <Grid item xs={3}>
+                <TextField
+                  variant="filled"
+                  id="count"
+                  label="Count"
+                  type="number"
+                  value={this.state.count}
+                  onChange={this.handleChange.bind(this, "count")}
+                />
+              </Grid>
 
-                      <FormControl variant="filled">
-                        <InputLabel>Food</InputLabel>
-                        <Select native value={this.state.food} input={<FilledInput name="food" id="food" onChange={this.handleChange.bind(this, "food")} />}>
-                          <option value="" />
-                          <option value={10}>Food a</option>
-                          <option value={20}>Food b</option>
-                          <option value={30}>Food c</option>
-                        </Select>
-                      </FormControl>
-
-                      <br/>
-                      <br/>
-
-                      <TextField
-                        variant="filled"
-                        id="count"
-                        label="Count"
-                        type="number"
-                        value={this.state.count}
-                        onChange={this.handleChange.bind(this, "count")}
-                      />
-
-                    </CardContent>
-                    <CardActions style={{justifyContent: 'center'}}>
-                      <Button variant="contained" color="primary">
-                        Add Food
-                      </Button>
-                    </CardActions>
-                  </Card>
-                </Grid>
+              <Grid item xs={3}>
+                <Button variant="contained" color="primary">
+                  Add Food
+                </Button>
+              </Grid>
 
             </Grid>
         )

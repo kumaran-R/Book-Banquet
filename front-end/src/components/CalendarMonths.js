@@ -14,7 +14,6 @@ const styles = theme => ({
     }
 });
 
-
 class CalendarMonths extends Component {
     constructor(props) {
         super(props);
@@ -28,154 +27,24 @@ class CalendarMonths extends Component {
       });
     }
 
+
     render(){
+      const months = {months :["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]}
         return(
             <Grid container style={{padding:24, margin:0}}>
-
               <Grid style={{padding:24, margin:0}}>
+
                 <Card style={{backgroundColor:"#dfb6f9"}}>
                   <CardActionArea style={{width:150,height:150}}>
                     <CardContent align="center">
                       <Typography variant="title" gutterBottom>
-                        January
+                      {months.months[0]}
                       </Typography>
                     </CardContent>
                   </CardActionArea>
                 </Card>
-              </Grid>
 
-              <Grid style={{padding:24, margin:0}}>
-                <Card style={{backgroundColor:"#dfb6f9"}}>
-                  <CardActionArea style={{width:150,height:150}}>
-                    <CardContent align="center">
-                      <Typography variant="title" gutterBottom>
-                        February
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
               </Grid>
-
-              <Grid style={{padding:24, margin:0}}>
-                <Card style={{backgroundColor:"#dfb6f9"}}>
-                  <CardActionArea style={{width:150,height:150}}>
-                    <CardContent align="center">
-                      <Typography variant="title" gutterBottom>
-                        March
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Grid>
-
-              <Grid style={{padding:24, margin:0}}>
-                <Card style={{backgroundColor:"#dfb6f9"}}>
-                  <CardActionArea style={{width:150,height:150}}>
-                    <CardContent align="center">
-                      <Typography variant="title" gutterBottom>
-                        April
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Grid>
-
-              <Grid style={{padding:24, margin:0}}>
-                <Card style={{backgroundColor:"#dfb6f9"}}>
-                  <CardActionArea style={{width:150,height:150}}>
-                    <CardContent align="center">
-                      <Typography variant="title" gutterBottom>
-                        May
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Grid>
-
-              <Grid style={{padding:24, margin:0}}>
-                <Card style={{backgroundColor:"#dfb6f9"}}>
-                  <CardActionArea style={{width:150,height:150}}>
-                    <CardContent align="center">
-                      <Typography variant="title" gutterBottom>
-                        June
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Grid>
-
-              <Grid style={{padding:24, margin:0}}>
-                <Card style={{backgroundColor:"#dfb6f9"}}>
-                  <CardActionArea style={{width:150,height:150}}>
-                    <CardContent align="center">
-                      <Typography variant="title" gutterBottom>
-                        July
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Grid>
-
-              <Grid style={{padding:24, margin:0}}>
-                <Card style={{backgroundColor:"#dfb6f9"}}>
-                  <CardActionArea style={{width:150,height:150}}>
-                    <CardContent align="center">
-                      <Typography variant="title" gutterBottom>
-                        August
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Grid>
-
-              <Grid style={{padding:24, margin:0}}>
-                <Card style={{backgroundColor:"#dfb6f9"}}>
-                  <CardActionArea style={{width:150,height:150}}>
-                    <CardContent align="center">
-                      <Typography variant="title" gutterBottom>
-                        September
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Grid>
-
-              <Grid style={{padding:24, margin:0}}>
-                <Card style={{backgroundColor:"#dfb6f9"}}>
-                  <CardActionArea style={{width:150,height:150}}>
-                    <CardContent align="center">
-                      <Typography variant="title" gutterBottom>
-                        October
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Grid>
-
-              <Grid style={{padding:24, margin:0}}>
-                <Card style={{backgroundColor:"#dfb6f9"}}>
-                  <CardActionArea style={{width:150,height:150}}>
-                    <CardContent align="center">
-                      <Typography variant="title" gutterBottom>
-                        November
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Grid>
-
-              <Grid style={{padding:24, margin:0}}>
-                <Card style={{backgroundColor:"#dfb6f9"}}>
-                  <CardActionArea style={{width:150,height:150}}>
-                    <CardContent align="center">
-                      <Typography variant="title" gutterBottom>
-                        December
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Grid>
-
             </Grid>
         )
     }
