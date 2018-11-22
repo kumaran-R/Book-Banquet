@@ -12,6 +12,7 @@ import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FilledInput from "@material-ui/core/FilledInput";
+import Button from "@material-ui/core/Button";
 const styles = theme => ({
     root: {
         flexGrow: 1
@@ -68,7 +69,11 @@ class AddFoodOrder extends Component {
                       />
 
                     </CardContent>
-
+                    <CardActions style={{justifyContent: 'center'}}>
+                      <Button variant="contained" color="primary">
+                        Add Food
+                      </Button>
+                    </CardActions>
                   </Card>
                 </Grid>
 
