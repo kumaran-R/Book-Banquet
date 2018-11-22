@@ -29,22 +29,24 @@ class CalendarMonths extends Component {
 
 
     render(){
-      const months = {months :["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]}
+      const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      const monthsList = months.map((month) =>
+        <Grid style={{padding:24, margin:0}}>
+          <Card style={{backgroundColor:"#dfb6f9"}}>
+            <CardActionArea style={{width:150,height:150}}>
+              <CardContent align="center">
+                <Typography variant="title" gutterBottom>
+                  {month}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Grid>
+        );
+
         return(
             <Grid container style={{padding:24, margin:0}}>
-              <Grid style={{padding:24, margin:0}}>
-
-                <Card style={{backgroundColor:"#dfb6f9"}}>
-                  <CardActionArea style={{width:150,height:150}}>
-                    <CardContent align="center">
-                      <Typography variant="title" gutterBottom>
-                      {months.months[0]}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-
-              </Grid>
+                {monthsList}
             </Grid>
         )
     }
