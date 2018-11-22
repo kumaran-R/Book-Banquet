@@ -45,6 +45,7 @@ class HallListForClient extends Component {
 
     componentDidMount() {
         this.props.fetchAllHalls();
+        this.props.fetchAllFoods();
     }
 
     onSearchInputChange(ev) {
