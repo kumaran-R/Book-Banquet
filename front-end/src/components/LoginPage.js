@@ -22,6 +22,17 @@ class LoginPage extends Component {
         this.state = {};
     }
 
+    onSubmit() {
+        let req = {}
+
+          req = {
+            username: this.state.username,
+            password: this.state.password,
+      }
+      this.props.login(req);
+
+    }
+
     handleChange(name, event)
     {
       this.setState({
