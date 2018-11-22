@@ -110,7 +110,7 @@ class FoodLists extends Component {
                             }
                         </Grid>
 
-                    ) : "NO Halls Found..........!!!!!!!!!"
+                    ) : "NO Foods Found..........!!!!!!!!!"
                 }
 
                 <Button variant="fab" onClick={this.addNewHall.bind(this)} className={classes.fab}
