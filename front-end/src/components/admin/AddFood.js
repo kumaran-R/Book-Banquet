@@ -141,7 +141,7 @@ handleChange(name,event){
         return(
             <Grid container spacing={24} justify="center" alignItems="center" style={{padding:24, margin:0, width:"100%"}} className="main">
 
-            <Grid item xs={6} sm={6} lg={3}>
+            <Grid item xs={12} sm={12} lg={12}>
               <Paper>
                 <Grid container spacing={24} style={{padding:24,margin:0,width:"100%"}}>
                   <Grid item xs={12}>

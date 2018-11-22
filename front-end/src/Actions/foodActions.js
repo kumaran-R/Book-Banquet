@@ -83,7 +83,7 @@ export const resetFood = () => {
     }
 };
 
-export const fetchAllPosts = () => {
+export const fetchAllFoods = () => {
     return (dispatch) => {
         return axios.get(apiUrl+'/all')
             .then(response => {

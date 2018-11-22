@@ -1,20 +1,21 @@
 import { connect } from 'react-redux';
-import { createPost,resetHall, fetchAllPosts,fetchHall } from './../Actions/hallActions';
+import { createFood,resetFood, fetchAllFoods,fetchFood } from './../Actions/foodActions';
 import AddFood from '../components/admin/AddFood.js';
+
 
 const mapDispatchToProps = dispatch => {
     return {
         onAddPost: post => {
-            dispatch(createPost(post));
+            dispatch(createFood(post));
         },
-        resetHall :() =>{
-            dispatch(resetHall());
+        resetFood:() =>{
+            dispatch(resetFood());
         },
-        fetchAllHalls :() =>{
-            dispatch(fetchAllPosts());
+        fetchAllFoods :() =>{
+            dispatch(fetchAllFoods());
         },
         fetchHall :(id) =>{
-            dispatch(fetchHall(id));
+            dispatch(fetchFood(id));
         },
 
     };
@@ -22,7 +23,7 @@ const mapDispatchToProps = dispatch => {
 
 function mapStateToProps(state) {
     return {
-        hallReducer: state.hallReducer
+        foodReducer: state.foodReducer
     }
 }
 
