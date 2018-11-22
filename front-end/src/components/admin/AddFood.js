@@ -221,7 +221,7 @@ handleChange(name,event){
 
         return(
           <MuiThemeProvider theme={theme}>
-            <Grid container spacing={24} justify="center" alignItems="center" style={{padding:24, margin:0, width:"100%"}} className="main" style={this.state.backG} >
+            <Grid container spacing={24} justify="center" alignItems="center" style={{padding:24, margin:0, width:"100%"}} className="main" >
 
             <Grid item xs={12} sm={12} lg={12}>
 
