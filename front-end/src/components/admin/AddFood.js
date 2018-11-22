@@ -223,19 +223,14 @@ handleChange(name,event){
                         }
 
                     </Grid>
-
-
+                  </Paper>
                 </Grid>
-              </Paper>
-            </Grid>
+                </Grid>
 
 
 
 
 
-
-
-            </Grid>
         )
     }
 }
