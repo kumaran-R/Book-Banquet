@@ -74,7 +74,7 @@ class LoginPage extends Component {
                   </CardContent>
 
                   <CardActions style={{justifyContent: 'center'}}>
-                    <Button variant="contained" color="primary">
+                    <Button onClick={this.onSubmit.bind(this)} variant="contained" color="primary">
                       Login
                     </Button>
                   </CardActions>
