@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import TextField from "@material-ui/core/TextField"
-import foodCard from "./foodCard.js";
+import FoodCard from "./FoodCard.js";
 import Button from "@material-ui/core/Button"
 import AddIcon from '@material-ui/icons/Add'
 import Dialog from '@material-ui/core/Dialog'
