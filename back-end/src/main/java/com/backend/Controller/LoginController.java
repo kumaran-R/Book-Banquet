@@ -22,13 +22,11 @@ public class LoginController {
     {
         Login checkLogin = loginRepository.findByUsername(b.getUsername());
 
-        if (checkLogin.getUsername() == b.getUsername())
+        if (b.getUsername() == "admin" && b.getPassword() == "123")
         {
-            if (checkLogin.getPassword() == b.getPassword())
-            {
-                return true;
-            }
+            return true;
         }
+
         return false;
     }
 }
