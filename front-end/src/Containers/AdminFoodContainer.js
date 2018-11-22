@@ -1,12 +1,12 @@
 import {connect} from 'react-redux';
-import {fetchAllPosts} from './../Actions/foodActions';
+import {fetchAllFoods} from './../Actions/foodActions';
 import FoodLists from '../components/admin/FoodLists';
 
 
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchAllFoods: () => { dispatch(fetchAllPosts());
+        fetchAllFoods: () => { dispatch(fetchAllFoods());
         }
     };
 };
