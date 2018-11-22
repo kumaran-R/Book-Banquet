@@ -134,14 +134,14 @@ class AddFood extends Component {
 
     componentDidMount() {
         this.props.resetFood();
-        if (this.props.viewMode && this.props.id) {
+        if (this.props.viewMode && this.props.foodId) {
             this.setState({
                 viewMode: true,
                 updateFood: true,
-                id: this.props.id
+                id: this.props.foodId
             })
 
-            this.props.fetchFood(this.props.id)
+            this.props.fetchFood(this.props.foodId)
         }
 
     }
