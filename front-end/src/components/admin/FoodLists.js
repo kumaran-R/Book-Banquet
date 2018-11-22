@@ -104,7 +104,7 @@ class FoodLists extends Component {
                             {
                                 this.props.foodReducer.foods.map((food, index)=> {
                                     return <Grid item key={index} xs={6} sm={4} lg={3} xl={2}>
-                                        <foodCard viewFood={this.viewFood.bind(this)} food={food}/>
+                                        <FoodCard viewFood={this.viewFood.bind(this)} food={food}/>
                                     </Grid>
 
 

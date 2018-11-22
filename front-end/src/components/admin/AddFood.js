@@ -95,7 +95,7 @@ class AddFood extends Component {
         this.state = {
           id:'',
           foodName:'',
-          foodType:'',
+          foodType:'Vegetables',
           tasteType:'',
           viewMode: false,
           updateFood: false
