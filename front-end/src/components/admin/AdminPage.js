@@ -12,6 +12,8 @@ import Divider from '@material-ui/core/Divider';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import TheHallListContainer from "../../Containers/TheHallListContainer.js"
 import AdminFoodContainer from "../../Containers/AdminFoodContainer.js"
+
+import LoginContainer from '../../Containers/LoginContainer'
 const styles = theme => ({
     root: {
         flexGrow: 1
@@ -82,6 +84,9 @@ class AdminPage extends Component {
                     </div>
                 </Drawer>
                 <AppBar toggleDrawer={this.toggleDrawer.bind(this)} position="fixed" fullWidth/>
+                
+                
+                <LoginContainer />
                 
                 {
                     this.state.currentMenu === 'halls' &&

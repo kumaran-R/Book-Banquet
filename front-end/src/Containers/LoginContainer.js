@@ -1,10 +1,10 @@
 import {connect} from 'react-redux';
-import {login} from './../Actions/loginActions';
-import LoginPage from './components/LoginPage';
+import {login} from './../Actions/loginAction';
+import LoginPage from './../components/LoginPage';
 
 const mapDispatchToProps = dispatch => {
     return {
-        login: () => { dispatch(fetchAllPosts());
+        login: () => { dispatch(login());
         }
     };
 };

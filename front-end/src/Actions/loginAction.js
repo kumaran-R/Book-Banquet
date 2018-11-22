@@ -7,7 +7,7 @@ export const login = (body ) => {
     return (dispatch) => {
         return axios.post(`${apiUrl}`, body)
             .then(response => {
-                dispatch(createPostSuccess(response.data))
+                dispatch(loginSuccess(response.data))
             })
             .catch(error => {
                 throw(error);
