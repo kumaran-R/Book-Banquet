@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const apiUrl = 'http://localhost:8080/login';
 
-export const login = (body ) => {
+export const login = (body) => {
     return (dispatch) => {
         return axios.post(`${apiUrl}`, body)
             .then(response => {

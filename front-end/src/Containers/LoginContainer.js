@@ -4,7 +4,7 @@ import LoginPage from './../components/LoginPage';
 
 const mapDispatchToProps = dispatch => {
     return {
-        login: () => { dispatch(login());
+        login: (post) => { dispatch(login(post));
         }
     };
 };
