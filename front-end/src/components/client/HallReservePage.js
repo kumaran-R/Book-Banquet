@@ -12,6 +12,7 @@ import Card from '@material-ui/core/Card';
 import SwipeableViews from 'react-swipeable-views';
 import HallDurationSelection from './HallDurationSelection.js'
 import CustomerInformation from "./../CustomerInformation.js"
+import AddFoodOrder from "./../AddFoodOrder.js"
 const styles = theme => ({
     root: {
         width: '100%',
@@ -129,7 +130,7 @@ class HallReservePage extends React.Component {
 
                             </Grid>
                             <Grid item xs={12} spacing={24} style={{padding:24, margin:0, width:"100%"}}>
-                                <TabContainer dir={theme.direction}>Item Two</TabContainer></Grid>
+                                <TabContainer dir={theme.direction}><AddFoodOrder /></TabContainer></Grid>
                             <Grid item xs={12} spacing={24} style={{padding:24, margin:0, width:"100%"}}>
                                 <CustomerInformation dir={theme.direction} />
 
