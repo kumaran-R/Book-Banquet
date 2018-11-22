@@ -10,6 +10,8 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
 import SwipeableViews from 'react-swipeable-views';
+import HallDurationSelection from './HallDurationSelection.js'
+import CustomerInformation from "./../CustomerInformation.js"
 const styles = theme => ({
     root: {
         width: '100%',
@@ -120,12 +122,18 @@ class HallReservePage extends React.Component {
                             //onChangeIndex={this.handleChangeIndex}
                         >
                             <Grid item xs={12} spacing={24} style={{padding:24, margin:0, width:"100%"}}>
-                                <TabContainer dir={theme.direction}>Item One</TabContainer>
+                                <TabContainer dir={theme.direction}>
+                                    <HallDurationSelection />
+                                </TabContainer>
+
+
                             </Grid>
                             <Grid item xs={12} spacing={24} style={{padding:24, margin:0, width:"100%"}}>
                                 <TabContainer dir={theme.direction}>Item Two</TabContainer></Grid>
                             <Grid item xs={12} spacing={24} style={{padding:24, margin:0, width:"100%"}}>
-                                <TabContainer dir={theme.direction}>Item Three</TabContainer>
+                                <CustomerInformation dir={theme.direction} />
+
+
                             </Grid>
                         </SwipeableViews>
                     </Grid>

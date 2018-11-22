@@ -34,64 +34,67 @@ class CustomerInformation extends Component {
     render() {
         return (
             <Grid container spacing={24} justify="center" alignItems="center"
-                  style={{padding:24, margin:0, width:"100%"}}>
+                  style={{padding:5, margin:0, width:"100%"}}>
+                <Grid item xs={6}>
 
-                <Grid>
-                  <Card>
-                    <CardContent>
+                <Paper>
+                    <Grid container spacing={24} justify="center" alignItems="center"
+                          style={{padding:5, margin:0, width:"100%"}}>
+                        <Grid item xs={12}>
+                            <Typography align="center" variant="h4" gutterBottom>
+                                Customer
+                                                              Information
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <TextField
+                                id="name"
+                                label="Name"
+                                variant="outlined"
+                                fullWidth
+                                value={this.state.name}
+                                onChange={this.handleChange.bind(this, "name")}
+                            />
+                        </Grid>
 
-                      <Typography align="center" variant="h4" gutterBottom>
-                        Customer
-                        <br/>
-                        Information
-                      </Typography>
+                        <Grid item xs={6}>
+                            <TextField
+                                id="email"
+                                label="Email"
+                                type="email"
+                                fullWidth
+                                variant="outlined"
+                                value={this.state.email}
+                                onChange={this.handleChange.bind(this, "email")}
+                            />
+                        </Grid>
 
-                      <TextField
-                        id="name"
-                        label="Name"
-                        variant="outlined"
-                        value={this.state.name}
-                        onChange={this.handleChange.bind(this, "name")}
-                      />
+                        <Grid item xs={6}>
+                        <TextField
+                            id="phone"
+                            label="Phone Number"
+                            type="number"
+                            fullWidth
+                            variant="outlined"
+                            value={this.state.phone}
+                            onChange={this.handleChange.bind(this, "phone")}
+                        />
+                            </Grid>
 
-                      <br/>
-                      <br/>
+                            <Grid item xs={6}>
+                        <TextField
+                            id="address"
+                            label="Address"
+                            variant="outlined"
+                            fullWidth
+                            value={this.state.address}
+                            onChange={this.handleChange.bind(this, "address")}
+                        />
+                                </Grid>
+                    </Grid>
+                </Paper>
+                    </Grid>
 
-                      <TextField
-                        id="email"
-                        label="Email"
-                        type="email"
-                        variant="outlined"
-                        value={this.state.email}
-                        onChange={this.handleChange.bind(this, "email")}
-                      />
-
-                      <br/>
-                      <br/>
-
-                      <TextField
-                        id="phone"
-                        label="Phone Number"
-                        type="number"
-                        variant="outlined"
-                        value={this.state.phone}
-                        onChange={this.handleChange.bind(this, "phone")}
-                      />
-
-                      <br/>
-                      <br/>
-
-                      <TextField
-                        id="address"
-                        label="Address"
-                        variant="outlined"
-                        value={this.state.address}
-                        onChange={this.handleChange.bind(this, "address")}
-                      />
-
-                      </CardContent>
-                    </Card>
-                </Grid>
             </Grid>
         )
     }
