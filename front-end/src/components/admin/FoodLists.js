@@ -96,11 +96,11 @@ class FoodLists extends Component {
             <Grid container spacing={24} style={{padding:24, margin:0, width:"100%"}}>
 
                 {
-                    this.props.hallReducer.halls ? (
+                    this.props.foodReducer.foods ? (
 
                         <Grid container spacing={24} style={{padding:24, margin:0, width:"100%"}}>
                             {
-                                this.props.hallReducer.halls.map((hall, index)=> {
+                                this.props.foodReducer.foods.map((hall, index)=> {
                                     return <Grid item key={index} xs={6} sm={4} lg={3} xl={2}>
                                         <HallCard viewHall={this.viewHall.bind(this)} hall={hall}/>
                                     </Grid>

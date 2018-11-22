@@ -13,7 +13,7 @@ const mapDispatchToProps = dispatch => {
 
 function mapStateToProps(state) {
     return {
-        hallReducer: state.hallReducer
+        foodReducer: state.foodReducer
     }
 }
 
