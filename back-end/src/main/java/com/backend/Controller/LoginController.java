@@ -4,6 +4,7 @@ import com.backend.Model.Login;
 import com.backend.Repository.LoginRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.Console;
 import java.util.List;
 
 
@@ -22,7 +23,7 @@ public class LoginController {
     {
         Login checkLogin = loginRepository.findByUsername(b.getUsername());
 
-        if (b.getUsername() == "admin" && b.getPassword() == "123")
+        if (b.getUsername().equals("admin") && b.getPassword().equals("123"))
         {
             return true;
         }
