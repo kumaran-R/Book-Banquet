@@ -22,11 +22,13 @@ class FoodCard extends Component {
                                 <Typography gutterBottom variant="headline" component="h2">
                                     {this.props.food.foodName}
                                 </Typography>
+
+                                
                                 <Typography component="p">
-                                    {this.props.food.foodType}
+                                    Food  :      {this.props.food.foodType}
                                 </Typography>
                                 <Typography component="p">
-                                    {this.props.food.tasteType}
+                                   Taste :        {this.props.food.tasteType}
                                 </Typography>
                             </CardContent>
                             <CardActions>

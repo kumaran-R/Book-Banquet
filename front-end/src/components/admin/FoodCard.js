@@ -23,10 +23,10 @@ class FoodCard extends Component {
                                     {this.props.food.foodName}
                                 </Typography>
                                 <Typography component="p">
-                                    {this.props.food.foodType}
+                                 Food Type :   {this.props.food.foodType}
                                 </Typography>
                                 <Typography component="p">
-                                    {this.props.food.tasteType}
+                                  Taste Type:  {this.props.food.tasteType}
                                 </Typography>
                             </CardContent>
                             <CardActions>
