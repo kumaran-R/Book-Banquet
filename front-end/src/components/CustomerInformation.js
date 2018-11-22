@@ -91,6 +91,23 @@ class CustomerInformation extends Component {
                             onChange={this.handleChange.bind(this, "address")}
                         />
                                 </Grid>
+
+                        <Grid item xs={6}>
+                            <TextField
+                                id="address"
+                                label="Down Payment"
+                                variant="outlined"
+                                fullWidth
+                                value={this.state.downPayment}
+                                onChange={this.handleChange.bind(this, "address")}
+                            />
+                        </Grid>
+
+                        <Grid item xs={6}>
+                            <Typography align="center" variant="h4" gutterBottom>
+                                Remaining $50
+                            </Typography>
+                        </Grid>
                     </Grid>
                 </Paper>
                     </Grid>
