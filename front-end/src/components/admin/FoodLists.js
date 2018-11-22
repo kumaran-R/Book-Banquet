@@ -38,8 +38,8 @@ class FoodLists extends Component {
         this.state = {
             searchString: "",
             newHallopen: false,
-            currentHallId: "",
-            hallViewMode: false
+            currentFoodId: "",
+            foodViewMode: false
         }
     }
 
@@ -64,8 +64,8 @@ class FoodLists extends Component {
 
     addNewHall() {
         this.setState({
-            currentHallId: '',
-            hallViewMode: false
+            currentFoodId: '',
+            foodViewMode: false
         })
 
         this.handleClickAddNewHallOpen()
@@ -82,8 +82,8 @@ class FoodLists extends Component {
 
     viewFood(id) {
         this.setState({
-            currentHallId: id,
-            hallViewMode: true
+            currentFoodId: id,
+            foodViewMode: true
         })
 
         this.handleClickAddNewHallOpen();
@@ -139,7 +139,7 @@ class FoodLists extends Component {
                      <Grid item xs={12} style={{padding:24, margin:0, width:"100%"}}>
                      **/}
 
-                    <TheFoodFormContainer hallId={this.state.currentHallId} viewMode={this.state.hallViewMode}
+                    <TheFoodFormContainer foodId={this.state.currentFoodId} viewMode={this.state.foodViewMode}
                                           closeDialog={this.handleClickAddNewHallClose.bind(this)}/>
                     {/**
                      </Grid>

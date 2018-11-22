@@ -108,14 +108,14 @@ class AddFood extends Component {
 
     componentDidMount() {
         this.props.resetFood();
-        if (this.props.viewMode && this.props.id) {
+        if (this.props.viewMode && this.props.foodId) {
             this.setState({
                 viewMode: true,
                 updateFood: true,
                 id: this.props.id
             })
 
-            this.props.fetchFood(this.props.id)
+            this.props.fetchFood(this.props.foodId)
         }
 
     }
@@ -228,6 +228,7 @@ handleChange(name,event){
                           className={classes.textField}
                           value={this.state.foodType}
                           onChange={this.handleChange.bind(this,'foodType')}
+                          InputProps={{readOnly: this.state.viewMode  }}
                           SelectProps={{
                             native: true,
                             MenuProps: {
@@ -254,6 +255,7 @@ handleChange(name,event){
                           helperText="Taste Type"
                           className={classes.textField}
                           value={this.state.tasteType}
+                          InputProps={{readOnly: this.state.viewMode  }}
                           onChange={this.handleChange.bind(this,'tasteType')}
                           SelectProps={{
                             native: true,

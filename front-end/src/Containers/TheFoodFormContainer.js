@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch => {
         fetchAllFoods :() =>{
             dispatch(fetchAllFoods());
         },
-        fetchHall :(id) =>{
+        fetchFood :(id) =>{
             dispatch(fetchFood(id));
         },
 
