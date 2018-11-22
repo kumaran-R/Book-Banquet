@@ -64,6 +64,11 @@ class AddHall extends Component {
         if (nextProps.hallReducer.hall) {
             this.state.name = nextProps.hallReducer.hall.name
             this.state.hallType = nextProps.hallReducer.hall.hallType
+            this.state.costPerHour = nextProps.hallReducer.hall.costPerHour
+            this.state.size = nextProps.hallReducer.hall.size
+            this.state.maxTables = nextProps.hallReducer.hall.maxTables
+            this.state.maxChairs = nextProps.hallReducer.hall.maxChairs
+            this.state.capacity = nextProps.hallReducer.hall.capacity
         }
     }
 
@@ -88,18 +93,32 @@ class AddHall extends Component {
     onSubmit() {
         let req = {}
         if (this.state.updateHall) {
-            req = {
-                id: this.state.hallId,
-                name: this.state.name,
-                hallType: this.state.hallType
-            }
-        }
-        if (!this.state.updateHall) {
-            req = {
-                name: this.state.name,
-                hallType: this.state.hallType
-            }
-        }
+          req = {
+              id: this.state.hallId,
+              name: this.state.name,
+              hallType: this.state.hallType,
+              costPerHour:this.state.costPerHour,
+              size:this.state.size,
+              maxTables:this.state.maxTables,
+              maxChairs:this.state.maxChairs,
+              capacity:this.state.capacity
+          }
+      }
+      if (!this.state.updateHall) {
+          req = {
+              name: this.state.name,
+              hallType: this.state.hallType,
+              costPerHour:this.state.costPerHour,
+              size:this.state.size,
+              maxTables:this.state.maxTables,
+              maxChairs:this.state.maxChairs,
+              capacity:this.state.capacity
+
+
+          }
+      }
+
+
 
         this.props.onAddPost(req)
 
