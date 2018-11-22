@@ -1,12 +1,12 @@
 import {connect} from 'react-redux';
-import {fetchAllPosts} from './../Actions/hallActions';
-import HallList from '../components/client/HallListForClient';
+import {fetchAllPosts} from './../Actions/foodActions';
+import FoodLists from '../components/admin/FoodLists';
 
 
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchAllHalls: () => { dispatch(fetchAllPosts());
+        fetchAllFoods: () => { dispatch(fetchAllPosts());
         }
     };
 };
@@ -20,4 +20,4 @@ function mapStateToProps(state) {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(HallList);
+)(FoodLists);

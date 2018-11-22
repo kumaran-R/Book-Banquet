@@ -61,7 +61,7 @@ export const fetchFood = id => {
 
 
 
-export const fetchFood = (food) => {
+export const fetchFoods = (food) => {
     return {
         type: FETCH_FOODS,
         payload:food
@@ -87,7 +87,7 @@ export const fetchAllPosts = () => {
     return (dispatch) => {
         return axios.get(apiUrl+'/all')
             .then(response => {
-                dispatch(fetchPosts(response.data))
+                dispatch(fetchFoods(response.data))
             })
             .catch(error => {
                 throw(error);
