@@ -1,7 +1,7 @@
 
 import { ADD_FOOD, DELETE_FOOD, FETCH_FOOD, RESET_FOOD,FETCH_FOODS } from './../Actions/types.js';
 
-export default function hallReducer(state = {}, action) {
+export default function foodReducer(state = {}, action) {
     switch (action.type) {
         case RESET_FOOD:
             return {...state, createStatus:false, food:{}};

@@ -38,13 +38,95 @@ class AddFood extends Component {
     constructor(props) {
         super(props);
         this.state = {
+          id:'',
           foodName:'',
           foodType:'',
-          tasteType:''
+          tasteType:'',
+          viewMode: false,
+          updateFood: false
 
 
         };
     }
+
+
+
+    componentDidMount() {
+        this.props.resetFood();
+        if (this.props.viewMode && this.props.id) {
+            this.setState({
+                viewMode: true,
+                updateFood: true,
+                id: this.props.id
+            })
+
+            this.props.fetchFood(this.props.id)
+        }
+
+    }
+
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.foodReducer.createStatus) {
+            this.props.resetFood();
+            this.props.fetchAllFoods();
+            this.props.closeDialog();
+        }
+
+        if (nextProps.foodReducer.food) {
+            this.state.foodName = nextProps.foodReducer.food.foodName
+            this.state.foodType = nextProps.foodReducer.food.foodType
+            this.state.tasteType = nextProps.foodReducer.food.tasteType
+        }
+    }
+
+
+    enableEdit() {
+        this.setState({
+            viewMode: false
+        })
+    }
+
+    componentWillUnmount() {
+        this.props.resetFood();
+    }
+
+
+    onSubmit() {
+        let req = {}
+        if (this.state.updateFood) {
+          req = {
+              id: this.state.id,
+              foodName: this.state.foodName,
+              foodType: this.state.foodType,
+              tasteType: this.state.tasteType
+
+          }
+      }
+      if (!this.state.updateFood) {
+          req = {
+            foodName: this.state.foodName,
+            foodType: this.state.foodType,
+            tasteType: this.state.tasteType
+
+
+          }
+      }
+
+        this.props.onAddPost(req)
+
+
+    }
+
+    onChangeDate = (date:Date) => {
+        console.log('Date: ', date)
+        this.setState({date})
+    }
+    onChangeTime = (time:Date) => {
+        console.log('Time: ', time)
+        this.setState({time})
+    }
+
 
 handleChange(name,event){
   this.setState({
@@ -63,9 +145,9 @@ handleChange(name,event){
               <Paper>
                 <Grid container spacing={24} style={{padding:24,margin:0,width:"100%"}}>
                   <Grid item xs={12}>
-                  <Typography component="h2" variant="display1" gutterBottom className={classes.title}>
-                    Add Food Item
-                  </Typography>
+                    <Typography variant="display2" align="center" color="primary">
+                        {this.state.updateFood ? "Update Food" : "Add Food"}
+                    </Typography>
                   </Grid>
 
                   <Grid item xs={12}>
@@ -77,6 +159,7 @@ handleChange(name,event){
                       onChange={this.handleChange.bind(this,'foodName')}
                       fullWidth
                       margin="normal"
+                      InputProps={{readOnly: this.state.viewMode  }}
                     />
                     </Grid>
                       <Grid item xs={12} alignItems="flex-end">
@@ -106,22 +189,41 @@ handleChange(name,event){
                         value={this.state.tasteType}
                         onChange={this.handleChange.bind(this,'tasteType')}
                         >
-                        <FormControlLabel value="female" control={<Radio />} label="Sweet" />
-                        <FormControlLabel value="male" control={<Radio />} label="Spicy" />
-                        <FormControlLabel value="other" control={<Radio />} label="Sour" />
-                        <FormControlLabel value="other" control={<Radio />} label="Bitter" />
-                        <FormControlLabel value="other" control={<Radio />} label="Salty" />
+                        <FormControlLabel value="Sweet" control={<Radio />} label="Sweet" />
+                        <FormControlLabel value="Spicy" control={<Radio />} label="Spicy" />
+                        <FormControlLabel value="Sour" control={<Radio />} label="Sour" />
+                        <FormControlLabel value="Bitter" control={<Radio />} label="Bitter" />
+                        <FormControlLabel value="Salty" control={<Radio />} label="Salty" />
                         </RadioGroup>
 
                       </Grid>
 
 
-                      <Grid item xs={3} alignItems="flex-end">
-                      <Button color="secondary" className={classes.create} >
-                        Commit
-                      </Button>
+                    </Grid>
+                      <Grid item xs={6}>
+                        <Button variant="contained" color="secondary" onClick={this.props.closeDialog.bind(this)}
+                                fullWidth>
+                            Cancel
+                        </Button>
+                    </Grid>
+                    <Grid item xs={6}>
+                        {
+                            (this.state.updateFood && this.state.viewMode) &&
+                            <Button onClick={this.enableEdit.bind(this)} variant="contained" color="primary"
+                                    fullWidth>
+                                Edit
+                            </Button>
+                        }
+                        {
+                            !this.state.viewMode &&
+                            <Button onClick={this.onSubmit.bind(this)} variant="contained" color="primary"
+                                    fullWidth>
+                                {this.state.updateFood ? "Update" : "Create"}
+                            </Button>
+                        }
 
-                  </Grid>
+                    </Grid>
+
 
                 </Grid>
               </Paper>
