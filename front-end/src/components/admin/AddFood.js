@@ -142,13 +142,16 @@ handleChange(name,event){
             <Grid container spacing={24} justify="center" alignItems="center" style={{padding:24, margin:0, width:"100%"}} className="main">
 
             <Grid item xs={12} sm={12} lg={12}>
-              <Paper>
-                <Grid container spacing={24} style={{padding:24,margin:0,width:"100%"}}>
-                  <Grid item xs={12}>
+
+                <Grid container spacing={24} justify="center" alignItems="center"
+                      style={{padding:24, margin:0, width:"100%"}}>
+
+                    <Grid item xs={12}>
                     <Typography variant="display2" align="center" color="primary">
-                        {this.state.updateFood ? "Update Food" : "Add Food"}
+                                                {this.state.updateFood ? "Update Food" : "Add Food"}
                     </Typography>
-                  </Grid>
+                        </Grid>
+
 
                   <Grid item xs={12}>
                     <TextField
@@ -167,6 +170,7 @@ handleChange(name,event){
                         <RadioGroup
                         aria-label="Gender"
                         name="FoodType"
+                        direction="row"
                         value={this.state.foodType}
                         onChange={this.handleChange.bind(this,'foodType')}
                         >
@@ -199,7 +203,7 @@ handleChange(name,event){
                       </Grid>
 
 
-                    </Grid>
+
                       <Grid item xs={6}>
                         <Button variant="contained" color="secondary" onClick={this.props.closeDialog.bind(this)}
                                 fullWidth>
@@ -223,7 +227,7 @@ handleChange(name,event){
                         }
 
                     </Grid>
-                  </Paper>
+            </Grid>
                 </Grid>
                 </Grid>
 
