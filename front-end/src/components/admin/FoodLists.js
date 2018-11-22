@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import TextField from "@material-ui/core/TextField"
-import HallCard from "./HallCard.js";
+import foodCard from "./foodCard.js";
 import Button from "@material-ui/core/Button"
 import AddIcon from '@material-ui/icons/Add'
 import Dialog from '@material-ui/core/Dialog'
@@ -13,6 +13,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import TheFoodFormContainer from '../../Containers/TheFoodFormContainer.js'
+
+
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -78,7 +80,7 @@ class FoodLists extends Component {
         this.setState({newHallopen: false});
     };
 
-    viewHall(id) {
+    viewFood(id) {
         this.setState({
             currentHallId: id,
             hallViewMode: true
@@ -100,9 +102,9 @@ class FoodLists extends Component {
 
                         <Grid container spacing={24} style={{padding:24, margin:0, width:"100%"}}>
                             {
-                                this.props.foodReducer.foods.map((hall, index)=> {
+                                this.props.foodReducer.foods.map((food, index)=> {
                                     return <Grid item key={index} xs={6} sm={4} lg={3} xl={2}>
-                                        <HallCard viewHall={this.viewHall.bind(this)} hall={hall}/>
+                                        <foodCard viewFood={this.viewFood.bind(this)} food={food}/>
                                     </Grid>
 
 
