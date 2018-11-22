@@ -1,7 +1,7 @@
 import { ADD_FOOD,DELETE_FOOD,FETCH_FOOD, RESET_FOOD,FETCH_FOODS} from './types';
 import axios from 'axios';
 
-const apiUrl = 'http://localhost:8080/food;
+const apiUrl = 'http://localhost:8080/food';
 
 export const createFood = (body ) => {
     return (dispatch) => {
