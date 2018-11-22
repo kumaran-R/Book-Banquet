@@ -22,8 +22,51 @@ class ClientPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
+          name:'',
+          mobileNumber:'',
+          email:'',
+          address:'',
+
             drawerOpen: false
         };
+
+        const TType = {
+          name:'',
+          mobileNumber:'',
+          email:'',
+          address:'',
+          reservation:{
+            banquetHall:{
+              name:'',
+              hallType:'',
+              costPerHour:'',
+              size:'',
+              maxTables:'',
+              maxChairs:'',
+              capacity:'',
+            },
+            personcount:'',
+            tableCount:'',
+            chairCount:'',
+            serviceRequest:'',
+            foodRequest:'',
+            foodOrders:{
+              count:'',
+              food:'',
+            },
+            customer:{
+              name:'',
+              mobileNumber:'',
+              email:'',
+              address:'',
+            },
+            fromDate:'',
+            toDate:'',
+            totalCost:'',
+            downPayent:'',
+          }
+        };
+
         this.sideList = (
             <div style={{width:'250px'}}>
 
