@@ -47,7 +47,7 @@ class AddFoodOrder extends Component {
 
                       <FormControl variant="filled">
                         <InputLabel>Food</InputLabel>
-                        <Select native value={this.state.food} input={<FilledInput name="food" id="food" onChange={this.handleChange.bind(this, "count")} />}>
+                        <Select native value={this.state.food} input={<FilledInput name="food" id="food" onChange={this.handleChange.bind(this, "food")} />}>
                           <option value="" />
                           <option value={10}>Food a</option>
                           <option value={20}>Food b</option>
