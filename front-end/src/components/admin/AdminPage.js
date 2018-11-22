@@ -12,7 +12,7 @@ import Divider from '@material-ui/core/Divider';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import TheHallListContainer from "../../Containers/TheHallListContainer.js"
 import AdminFoodContainer from "../../Containers/AdminFoodContainer.js"
-
+import ReservationContainer from "../../Containers/ReservationContainer.js"
 import LoginContainer from '../../Containers/LoginContainer'
 const styles = theme => ({
     root: {
@@ -45,9 +45,9 @@ class AdminPage extends Component {
                         <ListItemText primary="Food"/>
                     </ListItem>
 
-                    <ListItem button>
+                    <ListItem button onClick={this.changeMenu.bind(this,'reservations')}>
                     <ListItemIcon><InboxIcon /></ListItemIcon>
-                    <ListItemText primary="Reservasions"/>
+                    <ListItemText primary="Reservations"/>
                 </ListItem>
 
                 </List>
@@ -99,6 +99,13 @@ class AdminPage extends Component {
                     this.state.currentMenu === 'foods' &&
                     <Grid container spacing={24} style={{padding:24, margin:0, width:"100%"}}>
                         <AdminFoodContainer />
+                    </Grid>
+                }
+
+                {
+                    this.state.currentMenu === 'reservations' &&
+                    <Grid container spacing={24} style={{padding:24, margin:0, width:"100%"}}>
+                        <ReservationContainer />
                     </Grid>
                 }
                 
