@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
-import AppBar from "./AppBar";
+import AppBar from "./ClientAppBar";
 import Grid from '@material-ui/core/Grid';
 import Drawer from '@material-ui/core/Drawer';
 import ListItem from '@material-ui/core/ListItem';
@@ -10,7 +10,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import TheHallListContainer from "../../Containers/TheHallListContainer.js"
+import ClientHallListContainer from "../../Containers/ClientHallListContainer.js"
 const styles = theme => ({
     root: {
         flexGrow: 1
@@ -18,7 +18,7 @@ const styles = theme => ({
 });
 
 
-class AdminPage extends Component {
+class ClientPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -42,9 +42,9 @@ class AdminPage extends Component {
                     </ListItem>
 
                     <ListItem button>
-                    <ListItemIcon><InboxIcon /></ListItemIcon>
-                    <ListItemText primary="Reservasions"/>
-                </ListItem>
+                        <ListItemIcon><InboxIcon /></ListItemIcon>
+                        <ListItemText primary="Reservasions"/>
+                    </ListItem>
 
                 </List>
 
@@ -75,7 +75,7 @@ class AdminPage extends Component {
                 </Drawer>
                 <AppBar toggleDrawer={this.toggleDrawer.bind(this)} position="fixed" fullWidth/>
                 <Grid container spacing={24} style={{padding:24, margin:0, width:"100%"}}>
-                    <TheHallListContainer />
+                    <ClientHallListContainer />
                 </Grid>
             </div>
 
@@ -83,8 +83,8 @@ class AdminPage extends Component {
     }
 }
 
-AdminPage.propTypes = {
+ClientPage.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(AdminPage);
+export default withStyles(styles)(ClientPage);

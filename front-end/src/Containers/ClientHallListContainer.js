@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {fetchAllPosts} from './../Actions/hallActions';
-import HallList from '../components/admin/HallLists';
+import HallList from '../components/client/HallListForClient';
 
 
 
