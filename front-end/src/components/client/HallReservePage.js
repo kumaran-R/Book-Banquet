@@ -91,6 +91,11 @@ class HallReservePage extends React.Component {
         });
     };
 
+
+    componentDidMount(){
+        this.props.fetchAllFoods();
+    }
+
     isStepSkipped(step) {
         return this.state.skipped.has(step);
     }
@@ -130,7 +135,7 @@ class HallReservePage extends React.Component {
 
                             </Grid>
                             <Grid item xs={12} spacing={24} style={{padding:24, margin:0, width:"100%"}}>
-                                <TabContainer dir={theme.direction}><AddFoodOrder /></TabContainer></Grid>
+                                <TabContainer dir={theme.direction}><AddFoodOrder foods={this.props.foodReducer.foods} /></TabContainer></Grid>
                             <Grid item xs={12} spacing={24} style={{padding:24, margin:0, width:"100%"}}>
                                 <CustomerInformation dir={theme.direction} />
 

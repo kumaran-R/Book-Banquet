@@ -12,6 +12,8 @@ import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FilledInput from "@material-ui/core/FilledInput";
+import ClientFoodCard from "./client/ClientFoodCard"
+
 import Button from "@material-ui/core/Button";
 const styles = theme => ({
     root: {
@@ -32,6 +34,8 @@ class AddFoodOrder extends Component {
         });
     };
 
+    addFood(){}
+
     render() {
         return (
             <Grid container spacing={24} style={{padding:0, margin:0, width:"100%"}}>
@@ -42,8 +46,26 @@ class AddFoodOrder extends Component {
                 </Paper>
               </Grid>
 
-              <Grid item xs={3}>
+              <Grid item xs={12}>
+<Paper>
+    {
+        this.props.foodReducer.foods ? (
 
+            <Grid container spacing={24} style={{padding:24, margin:0, width:"100%"}}>
+                {
+                    this.props.foods.map((food, index)=> {
+                        return <Grid item key={index} xs={6} sm={4} lg={3} xl={2}>
+                            <ClientFoodCard addFood={this.addFood.bind(this)} food={food}/>
+                        </Grid>
+
+
+                    })
+                }
+            </Grid>
+
+        ) : "NO Foods Found..........!!!!!!!!!"
+    }
+</Paper>
               </Grid>
 
               <Grid item xs={3}>
