@@ -31,6 +31,10 @@ class CustomerInformation extends Component {
         });
     };
 
+    saveValues(){
+
+    }
+
     render() {
         return (
             <Grid container spacing={24} justify="center" alignItems="center"
@@ -108,10 +112,32 @@ class CustomerInformation extends Component {
                                 Remaining $50
                             </Typography>
                         </Grid>
+
                     </Grid>
                 </Paper>
                     </Grid>
+                <Grid item xs={12}>
+                    <Grid container spacing={24} justify="center">
+                        <Grid item xs={2}>
+                            <Button
+                                onClick={this.props.handleBack}
+                            >
+                                Back to Foods
+                            </Button>
+                        </Grid>
+                        <Grid item xs={2}>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={this.saveValues.bind(this)}
 
+                            >
+                                Place Order
+                            </Button>
+                        </Grid>
+
+                    </Grid>
+                </Grid>
             </Grid>
         )
     }

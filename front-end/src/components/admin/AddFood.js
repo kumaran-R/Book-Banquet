@@ -122,7 +122,7 @@ class AddFood extends Component {
           id:'',
           foodName:'',
           foodType:'Vegetables',
-          tasteType:'',
+          tasteType:'Spicy',
           viewMode: false,
           updateFood: false,
           backG:'green'
@@ -251,7 +251,7 @@ handleChange(name,event){
                         <TextField
                           id="filled-select-currency-native"
                           select
-                          helperText="Food Type"
+                          label="Food Type"
                           className={classes.textField}
                           value={this.state.foodType}
                           onChange={this.handleChange.bind(this,'foodType')}
@@ -263,7 +263,7 @@ handleChange(name,event){
                           }}
                           fullWidth
                           margin="normal"
-                          variant="filled"
+                          variant="outlined"
                           >
                           {FType.map(option => (
                             <option key={option.value} value={option.value}>
@@ -278,7 +278,9 @@ handleChange(name,event){
                         <TextField
                           id="filled-select-currency-native"
                           select
-                          helperText="Taste Type"
+                          margin="normal"
+                          variant="outlined"
+                          label=" Taste Type"
                           className={classes.textField}
                           value={this.state.tasteType}
                           onChange={this.handleChange.bind(this,'tasteType')}
@@ -289,8 +291,7 @@ handleChange(name,event){
                             },
                           }}
                           fullWidth
-                          margin="normal"
-                          variant="filled"
+
                           >
                           {TType.map(option => (
                             <option key={option.value} value={option.value}>

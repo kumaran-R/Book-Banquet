@@ -15,7 +15,8 @@
     "axios": "0.18.0",
     "react-router": "3.2.0",
     "material-ui-next-pickers": "0.0.15",
-    "react-swipeable-views": "0.13.0"
+    "react-swipeable-views": "0.13.0",
+    "moment":"2.22.2"
   },
   "scripts": {
     "start": "react-scripts start",

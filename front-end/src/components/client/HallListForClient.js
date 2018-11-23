@@ -13,7 +13,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import HallReservePage from "./HallReservePage.js";
-
+import ClientReservationContainer from "./../../Containers/ClientReservationContainer.js"
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -80,15 +80,16 @@ class HallListForClient extends Component {
         this.setState({newHallopen: false});
     };
 
-    viewHall(id) {
+    viewHall(hall) {
         this.setState({
-            currentHallId: id,
-            hallViewMode: true
+            currentHallId: hall.id,
+            hallViewMode: true,
+            selectedHall:hall
         })
 
         this.handleClickAddNewHallOpen();
 
-        console.log(id)
+        
     }
 
 
@@ -137,7 +138,7 @@ class HallListForClient extends Component {
                      </Toolbar>
                      </AppBar><Grid container style={{padding:5, margin:0, width:"100%"}}>
                      <Grid item xs={12} style={{padding:24, margin:0, width:"100%"}}>
-                    <HallReservePage />
+                    <ClientReservationContainer hall={this.state.selectedHall} />
                      </Grid>
                      </Grid>
                     

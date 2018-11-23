@@ -27,7 +27,7 @@ class ClientHallCard extends Component {
                                 </Typography>
                             </CardContent>
                             <CardActions>
-                                <Button onClick={this.props.viewHall.bind(this,this.props.hall.id)} variant="contained" size="small"
+                                <Button onClick={this.props.viewHall.bind(this,this.props.hall)} variant="contained" size="small"
                                         color="primary">
                                     Go to page
                                 </Button>

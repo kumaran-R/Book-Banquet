@@ -46,9 +46,9 @@ function getStepContent(step) {
 
 function TabContainer({children, dir}) {
     return (
-        <Paper dir={dir} style={{ padding: 8 * 3 }}>
+        <Grid dir={dir} style={{ padding: 1* 3 }}>
             {children}
-        </Paper>
+        </Grid>
     );
 }
 
@@ -61,10 +61,11 @@ class HallReservePage extends React.Component {
     state = {
         activeStep: 0,
         skipped: new Set(),
+        reservationReq: {}
     };
 
 
-    handleNext = () => {
+    handleNext(key,value){
         const {activeStep} = this.state;
         let {skipped} = this.state;
         if (this.isStepSkipped(activeStep)) {
@@ -73,7 +74,7 @@ class HallReservePage extends React.Component {
         }
         this.setState({
             activeStep: activeStep + 1,
-            skipped,
+            [key]:value
         });
     };
 
@@ -84,7 +85,6 @@ class HallReservePage extends React.Component {
     };
 
 
-
     handleReset = () => {
         this.setState({
             activeStep: 0,
@@ -92,7 +92,7 @@ class HallReservePage extends React.Component {
     };
 
 
-    componentDidMount(){
+    componentDidMount() {
         this.props.fetchAllFoods();
     }
 
@@ -101,7 +101,7 @@ class HallReservePage extends React.Component {
     }
 
     render() {
-        const {classes, theme} = this.props;
+        const {classes, theme,hall} = this.props;
         const steps = getSteps();
         const {activeStep} = this.state;
 
@@ -120,71 +120,33 @@ class HallReservePage extends React.Component {
                 </Stepper>
 
 
-                <Grid container spacing={24} style={{padding:24, margin:0, width:"100%"}}>
-                    <Grid item xs={12} spacing={24} style={{padding:24, margin:0, width:"100%"}}>
+                <Grid container spacing={24} style={{padding:2, margin:0, width:"100%"}}>
+                    <Grid item xs={12}>
                         <SwipeableViews
                             axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
                             index={activeStep}
                             //onChangeIndex={this.handleChangeIndex}
                         >
-                            <Grid item xs={12} spacing={24} style={{padding:24, margin:0, width:"100%"}}>
+                            <Grid item xs={12}>
                                 <TabContainer dir={theme.direction}>
-                                    <HallDurationSelection />
+                                    <HallDurationSelection hall={hall} handleNext={this.handleNext.bind(this)}  />
                                 </TabContainer>
-
-
                             </Grid>
-                            <Grid item xs={12} spacing={24} style={{padding:24, margin:0, width:"100%"}}>
-                                <TabContainer dir={theme.direction}><AddFoodOrder foods={this.props.foodReducer.foods} /></TabContainer></Grid>
-                            <Grid item xs={12} spacing={24} style={{padding:24, margin:0, width:"100%"}}>
-                                <CustomerInformation dir={theme.direction} />
-
-
+                            <Grid item xs={12}>
+                                <TabContainer dir={theme.direction}>
+                                    <AddFoodOrder handleNext={this.handleNext.bind(this)} handleBack={this.handleBack} foods={this.props.foodReducer.foods}/>
+                                </TabContainer
+                                ></Grid>
+                            <Grid item xs={12}>
+                                <TabContainer dir={theme.direction}>
+                                    <CustomerInformation handleNext={this.handleNext.bind(this)} handleBack={this.handleBack} dir={theme.direction}/>
+                                </TabContainer>
                             </Grid>
                         </SwipeableViews>
                     </Grid>
                 </Grid>
 
 
-                <Grid container spacing={24} container
-                      direction="row"
-                      justify="center"
-                      alignItems="center" style={{padding:24, margin:0, width:"100%"}}>
-                    <Grid item xs={3} spacing={24} style={{padding:24, margin:0, width:"100%"}}>
-                    {activeStep === steps.length ? (
-                        <div>
-                            <Typography className={classes.instructions}>
-                                All steps completed - you&quot;re finished
-                            </Typography>
-                            <Button onClick={this.handleReset} className={classes.button}>
-                                Reset
-                            </Button>
-                        </div>
-                    ) : (
-                        <div style={{textAlign:'center'}}>
-                            <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
-                            <div>
-                                <Button
-                                    disabled={activeStep === 0}
-                                    onClick={this.handleBack}
-                                    className={classes.button}
-                                >
-                                    Back
-                                </Button>
-
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    onClick={this.handleNext}
-                                    className={classes.button}
-                                >
-                                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                                </Button>
-                            </div>
-                        </div>
-                    )}
-                        </Grid>
-                </Grid>
             </div>
         );
     }
