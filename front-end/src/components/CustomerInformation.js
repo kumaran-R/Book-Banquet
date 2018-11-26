@@ -26,7 +26,7 @@ const Obj = [
 class CustomerInformation extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {downPayment:0};
     }
 
     handleChange(name, event) {

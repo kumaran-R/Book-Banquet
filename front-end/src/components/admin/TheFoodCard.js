@@ -5,6 +5,7 @@ import CardContent from "@material-ui/core/CardContent"
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button"
 import Typography from "@material-ui/core/Typography"
+import Grid from "@material-ui/core/Grid/Grid";
 
 class FoodCard extends Component {
 
@@ -23,13 +24,18 @@ class FoodCard extends Component {
                                     {this.props.food.foodName}
                                 </Typography>
 
-                                
-                                <Typography component="p">
+                                <Grid container  style={{padding:2, margin:0, width:"100%"}}>
+                                    <Grid item xs={6}>
+                                <Typography component="h3">
                                     Food  :      {this.props.food.foodType}
                                 </Typography>
-                                <Typography component="p">
+                                    </Grid>
+                                    <Grid item xs={6}>
+                                <Typography component="h3">
                                    Taste :        {this.props.food.tasteType}
                                 </Typography>
+                                    </Grid>
+                                </Grid>
                             </CardContent>
                             <CardActions>
                                 <Button onClick={this.props.viewFood.bind(this,this.props.food.id)} variant="contained" size="small"
