@@ -17,6 +17,10 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Button from "@material-ui/core/Button/Button";
+import Grid from "@material-ui/core/Grid/Grid";
+import List from "@material-ui/core/List/List";
+import ListItem from "@material-ui/core/ListItem/ListItem";
+import ListItemText from "@material-ui/core/ListItemText/ListItemText";
 
 const styles = theme => ({
     card: {
@@ -74,13 +78,38 @@ class ClientHallCard extends Component {
                             image="/static/images/cards/paella.jpg"
                             title="Paella dish"
                         />
-                        <Typography component="p">
-                            {hall.costPerHour}
-                            {hall.size}
-                            {hall.maxTables}
-                            {hall.maxChairs}
-                            {hall.capacity}
-                        </Typography>
+                        <CardContent>
+                            <List>
+                                <Grid container spacing={24} style={{padding:24, margin:0, width:"100%"}}>
+                                    <Grid item xs={4}>
+                                        <ListItem>
+                                            <ListItemText primary={hall.costPerHour} secondary="Cost Per Hour"/>
+                                        </ListItem>
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <ListItem>
+                                            <ListItemText primary={hall.size} secondary="Size"/>
+                                        </ListItem>
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <ListItem>
+                                            <ListItemText primary={hall.maxTables} secondary="Max Tables"/>
+                                        </ListItem>
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <ListItem>
+                                            <ListItemText primary={hall.maxChairs} secondary="Max Chairs"/>
+                                        </ListItem>
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <ListItem>
+                                            <ListItemText primary={hall.capacity} secondary="Capacity"/>
+                                        </ListItem>
+                                    </Grid>
+
+                                </Grid>
+                            </List>
+                        </CardContent>
 
                         <Button color="primary" className={classes.button}>
                             Reserve
@@ -100,5 +129,6 @@ class ClientHallCard extends Component {
 ClientHallCard.propTypes = {
     classes: PropTypes.object.isRequired,
 };
+
 
 export default withStyles(styles)(ClientHallCard);
