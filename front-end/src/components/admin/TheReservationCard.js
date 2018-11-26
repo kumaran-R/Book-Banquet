@@ -13,6 +13,38 @@ class TheReservationCard extends Component {
         super(props)
     }
 
+    let Obj = [
+      Banquethall:{
+        name:this.props.hall.name,
+        hallType:this.props.hall.hallType,
+        costPerHour:this.props.hall.costPerHour,
+        size:this.props.hall.size,
+        maxTables:this.props.hall.maxTables,
+        maxChairs:this.props.hall.maxChairs,
+        capacity:this.props.hall.capacity,
+      },
+
+      personCount:this.props.hall.personCount,
+      tableCount:this.props.hall.tableCount,
+      chairCount:this.props.hall.chairCount,
+      serviceRequest:this.props.hall.serviceRequest,
+      foodRequest:this.props.hall.foodRequest,
+      foodOrder:this.props.hall.foodOrder,
+
+      Customer:{
+        name:this.props.hall.Customer.name,
+        mobileNumber:this.props.hall.Customer.mobileNumber,
+        email:this.props.hall.Customer.email,
+        address:this.props.hall.Customer.address,
+      },
+
+      fromDate:this.props.hall.fromDate,
+      toDate:this.props.hall.toDate,
+      totalCost:this.props.hall.totalCost,
+      downPayent:this.props.hall.downPayent
+
+    ];
+
     render() {
         return (
             <div>
