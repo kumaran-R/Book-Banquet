@@ -52,7 +52,7 @@ class ClientHallCard extends Component {
 
     render() {
         const { classes } = this.props;
-        let {halldet}=this.props.hallReducer;
+        let {hall}=this.props;
         return (
             <div>
                 {
@@ -65,8 +65,8 @@ class ClientHallCard extends Component {
                                 </Avatar>
                             }
 
-                            title={halldet.name}
-                            subheader={halldet.hallType}
+                            title={hall.name}
+                            subheader={hall.hallType}
                         />
 
                         <CardMedia
@@ -75,11 +75,11 @@ class ClientHallCard extends Component {
                             title="Paella dish"
                         />
                         <Typography component="p">
-                            {halldet.costPerHour}
-                            {halldet.size}
-                            {halldet.maxTables}
-                            {halldet.maxChairs}
-                            {halldet.capacity}
+                            {hall.costPerHour}
+                            {hall.size}
+                            {hall.maxTables}
+                            {hall.maxChairs}
+                            {hall.capacity}
                         </Typography>
 
                         <Button color="primary" className={classes.button}>

@@ -13,7 +13,9 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import HallReservePage from "./HallReservePage.js";
-import ClientReservationContainer from "./../../Containers/ClientReservationContainer.js"
+import ClientReservationContainer from "./../../Containers/ClientReservationContainer.js";
+import HallDetailsCard from "./HallDetailsCard.js"
+
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -105,7 +107,7 @@ class HallListForClient extends Component {
                             {
                                 this.props.hallReducer.halls.map((hall, index)=> {
                                     return <Grid item key={index} xs={6} sm={4} lg={3} xl={2}>
-                                        <ClientHallCard viewHall={this.viewHall.bind(this)} hall={hall}/>
+                                        <HallDetailsCard viewHall={this.viewHall.bind(this)} hall={hall}/>
                                     </Grid>
 
 
