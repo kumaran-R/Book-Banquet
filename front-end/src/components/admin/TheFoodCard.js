@@ -24,14 +24,14 @@ class FoodCard extends Component {
                                     {this.props.food.foodName}
                                 </Typography>
 
-                                <Grid container spacing={24} style={{padding:24, margin:0, width:"100%"}}>
+                                <Grid container  style={{padding:2, margin:0, width:"100%"}}>
                                     <Grid item xs={6}>
-                                <Typography component="p">
+                                <Typography component="h3">
                                     Food  :      {this.props.food.foodType}
                                 </Typography>
                                     </Grid>
                                     <Grid item xs={6}>
-                                <Typography component="p">
+                                <Typography component="h3">
                                    Taste :        {this.props.food.tasteType}
                                 </Typography>
                                     </Grid>
