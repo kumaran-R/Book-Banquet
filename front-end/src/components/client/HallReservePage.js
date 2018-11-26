@@ -157,7 +157,9 @@ class HallReservePage extends React.Component {
                                 <TabContainer dir={theme.direction}>
                                     <CustomerInformation handleNext={this.handleNext.bind(this)}
                                                          reservationReq={this.state.reservationReqValues}
-                                                         handleBack={this.handleBack} dir={theme.direction}/>
+                                                         handleBack={this.handleBack} dir={theme.direction}
+                                        {...this.props}
+                                    />
                                 </TabContainer>
                             </Grid>
                         </SwipeableViews>
