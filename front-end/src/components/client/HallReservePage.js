@@ -61,15 +61,15 @@ class HallReservePage extends React.Component {
     state = {
         activeStep: 0,
         skipped: new Set(),
-        reservationReq: {
-            values:{
-                totalCost:0
-            }
-        }
+        reservationReq: {},
+        reservationReqValues: {totalCost: 0},
+        reservationReqFoodOrders: {},
+
+
     };
 
 
-    handleNext(key,value){
+    handleNext(key, value) {
         const {activeStep} = this.state;
         let {skipped} = this.state;
         if (this.isStepSkipped(activeStep)) {
@@ -78,10 +78,19 @@ class HallReservePage extends React.Component {
         }
         this.setState({
             activeStep: activeStep + 1,
-            reservationReq:{
-                [key]:value
-            }
+
         });
+        
+        if(key==="values"){
+            this.state.reservationReqValues = value;
+        }
+        
+        if(key==="foodOrders"){
+            this.state.reservationReqFoodOrders=value;
+        }
+
+        this.state.reservationReq = {[key]: value}
+        this.forceUpdate();
     };
 
     handleBack = () => {
@@ -107,7 +116,7 @@ class HallReservePage extends React.Component {
     }
 
     render() {
-        const {classes, theme,hall} = this.props;
+        const {classes, theme, hall} = this.props;
         const steps = getSteps();
         const {activeStep} = this.state;
 
@@ -135,17 +144,20 @@ class HallReservePage extends React.Component {
                         >
                             <Grid item xs={12}>
                                 <TabContainer dir={theme.direction}>
-                                    <HallDurationSelection hall={hall} handleNext={this.handleNext.bind(this)}  />
+                                    <HallDurationSelection hall={hall} handleNext={this.handleNext.bind(this)}/>
                                 </TabContainer>
                             </Grid>
                             <Grid item xs={12}>
                                 <TabContainer dir={theme.direction}>
-                                    <AddFoodOrder handleNext={this.handleNext.bind(this)} handleBack={this.handleBack} foods={this.props.foodReducer.foods}/>
+                                    <AddFoodOrder handleNext={this.handleNext.bind(this)} handleBack={this.handleBack}
+                                                  foods={this.props.foodReducer.foods}/>
                                 </TabContainer
                                 ></Grid>
                             <Grid item xs={12}>
                                 <TabContainer dir={theme.direction}>
-                                    <CustomerInformation handleNext={this.handleNext.bind(this)} reservationReq={this.state.reservationReq} handleBack={this.handleBack}  dir={theme.direction}/>
+                                    <CustomerInformation handleNext={this.handleNext.bind(this)}
+                                                         reservationReq={this.state.reservationReqValues}
+                                                         handleBack={this.handleBack} dir={theme.direction}/>
                                 </TabContainer>
                             </Grid>
                         </SwipeableViews>
