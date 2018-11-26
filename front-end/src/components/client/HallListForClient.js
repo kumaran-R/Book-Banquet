@@ -118,7 +118,7 @@ class HallListForClient extends Component {
                     ) : "NO Halls Found..........!!!!!!!!!"
                 }
 
-               
+
 
                 <Dialog
                     fullScreen
