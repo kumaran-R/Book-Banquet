@@ -6,8 +6,6 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import {DateFormatInput, TimeFormatInput} from 'material-ui-next-pickers';
-import { TimePicker } from 'material-ui-pickers';
-import { DatePicker } from 'material-ui-pickers';
 import TextField from '@material-ui/core/TextField'
 import * as moment from 'moment';
 const styles = theme => ({
