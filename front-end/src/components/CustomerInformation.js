@@ -32,7 +32,7 @@ class CustomerInformation extends Component {
     };
 
     saveValues(){
-
+        //this.props.reservationReq
     }
 
     render() {
@@ -103,13 +103,13 @@ class CustomerInformation extends Component {
                                 variant="outlined"
                                 fullWidth
                                 value={this.state.downPayment}
-                                onChange={this.handleChange.bind(this, "address")}
+                                onChange={this.handleChange.bind(this, "downPayment")}
                             />
                         </Grid>
 
                         <Grid item xs={6}>
                             <Typography align="center" variant="h4" gutterBottom>
-                                Remaining $50
+                                Remaining ${this.props.reservationReq.values.totalCost-this.state.downPayment}
                             </Typography>
                         </Grid>
 

@@ -5,7 +5,12 @@ import Grid from '@material-ui/core/Grid';
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
-import {DateFormatInput, TimeFormatInput} from 'material-ui-next-pickers'
+// import {DateFormatInput, TimeFormatInput} from 'material-ui-next-pickers';
+import { TimePicker } from 'material-ui-pickers';
+import { DatePicker } from 'material-ui-pickers';
+import DateFnsUtils from '@date-io/date-fns';
+import MomentUtils from '@date-io/moment';
+import { MuiPickersUtilsProvider } from 'material-ui-pickers';
 import TextField from '@material-ui/core/TextField'
 import * as moment from 'moment';
 const styles = theme => ({
@@ -85,10 +90,12 @@ class HallDurationSelection extends Component {
         let toTime = moment(this.state.toDateCalc+"T"+this.state.toTimeCalc);
         this.setState({
             totalHours:toTime.diff(fromTime,'hours',true),
+            totalCost:this.props.hall.costPerHour*toTime.diff(fromTime,'hours',true),
             fromTimeString:moment(fromTime).format("DD-MM-YYYY hh:mm a"),
             toTimeString:moment(toTime).format("DD-MM-YYYY hh:mm a")
         })
         console.log(toTime.diff(fromTime,'hours',true));
+        console.log(this.state.totalCost);
 
     }
 
@@ -98,7 +105,9 @@ class HallDurationSelection extends Component {
             to:this.state.toTimeString,
             personCount:this.state.personCount,
             tableCount:this.state.tableCount,
-            chairCount:this.state.chairCount
+            chairCount:this.state.chairCount,
+            totalCost:this.state.totalCost
+
             }
 
         this.props.handleNext('values',valueDetails)
@@ -126,12 +135,16 @@ class HallDurationSelection extends Component {
                                         From
                                     </Typography>
                                     <Grid item xs={12} style={{padding:15, margin:0, width:"100%"}}>
-                                        <DateFormatInput label="From Date" name='date-input' value={this.state.fromDate}
+                                        <MuiPickersUtilsProvider utils={MomentUtils}>
+                                        <DatePicker label="From Date" name='date-input' value={this.state.fromDate}
                                                          onChange={this.onChangeFromDate.bind(this)}/>
+                                            </MuiPickersUtilsProvider>
                                     </Grid>
                                     <Grid item xs={12} style={{padding:15, margin:0, width:"100%"}}>
-                                        <TimeFormatInput label="From Time" name='time-input' value={this.state.fromTime}
+                                        <MuiPickersUtilsProvider utils={MomentUtils}>
+                                        <TimePicker label="From Time" name='time-input' value={this.state.fromTime}
                                                          onChange={this.onChangeFromTime.bind(this)}/>
+                                            </MuiPickersUtilsProvider>
                                     </Grid>
                                 </Grid>
                             </Paper>
@@ -143,12 +156,16 @@ class HallDurationSelection extends Component {
                                         To
                                     </Typography>
                                     <Grid item xs={12} style={{padding:15, margin:0, width:"100%"}}>
-                                        <DateFormatInput label="To Date" name='date-input' value={this.state.toDate}
+                                        <MuiPickersUtilsProvider utils={MomentUtils}>
+                                        <DatePicker label="To Date" name='date-input' value={this.state.toDate}
                                                          onChange={this.onChangeToDate.bind(this)}/>
+                                            </MuiPickersUtilsProvider>
                                     </Grid>
                                     <Grid item xs={12} style={{padding:15, margin:0, width:"100%"}}>
-                                        <TimeFormatInput label="To Time" name='time-input' value={this.state.toTime}
+                                        <MuiPickersUtilsProvider utils={MomentUtils}>
+                                        <TimePicker label="To Time" name='time-input' value={this.state.toTime}
                                                          onChange={this.onChangeToTime.bind(this)}/>
+                                            </MuiPickersUtilsProvider>
                                     </Grid>
                                 </Grid>
                             </Paper>

@@ -61,7 +61,11 @@ class HallReservePage extends React.Component {
     state = {
         activeStep: 0,
         skipped: new Set(),
-        reservationReq: {}
+        reservationReq: {
+            values:{
+                totalCost:0
+            }
+        }
     };
 
 
@@ -74,7 +78,9 @@ class HallReservePage extends React.Component {
         }
         this.setState({
             activeStep: activeStep + 1,
-            [key]:value
+            reservationReq:{
+                [key]:value
+            }
         });
     };
 
@@ -139,7 +145,7 @@ class HallReservePage extends React.Component {
                                 ></Grid>
                             <Grid item xs={12}>
                                 <TabContainer dir={theme.direction}>
-                                    <CustomerInformation handleNext={this.handleNext.bind(this)} handleBack={this.handleBack} dir={theme.direction}/>
+                                    <CustomerInformation handleNext={this.handleNext.bind(this)} reservationReq={this.state.reservationReq} handleBack={this.handleBack}  dir={theme.direction}/>
                                 </TabContainer>
                             </Grid>
                         </SwipeableViews>
