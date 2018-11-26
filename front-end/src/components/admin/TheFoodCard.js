@@ -5,6 +5,7 @@ import CardContent from "@material-ui/core/CardContent"
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button"
 import Typography from "@material-ui/core/Typography"
+import TextField from "@material-ui/core/TextField"
 import Grid from "@material-ui/core/Grid/Grid";
 
 class FoodCard extends Component {
@@ -24,21 +25,32 @@ class FoodCard extends Component {
                                     {this.props.food.foodName}
                                 </Typography>
 
-                                <Grid container  style={{padding:2, margin:0, width:"100%"}}>
+                                <Grid container spacing={8} style={{padding:2, margin:0, width:"100%"}}>
                                     <Grid item xs={6}>
-                                <Typography component="h3">
-                                    Food  :      {this.props.food.foodType}
-                                </Typography>
+                                        <TextField
+                                            label="Taste"
+                                            variant="outlined"
+                                            value={this.props.food.foodType}
+                                            fullWidth
+                                            margin="normal"
+                                            InputProps={{readOnly: true  }}
+                                        />
                                     </Grid>
                                     <Grid item xs={6}>
-                                <Typography component="h3">
-                                   Taste :        {this.props.food.tasteType}
-                                </Typography>
+                                        <TextField
+                                            label="Taste"
+                                            variant="outlined"
+                                            value={this.props.food.tasteType}
+                                            fullWidth
+                                            margin="normal"
+                                            InputProps={{readOnly: true  }}
+                                        />
                                     </Grid>
                                 </Grid>
                             </CardContent>
                             <CardActions>
-                                <Button onClick={this.props.viewFood.bind(this,this.props.food.id)} variant="contained" size="small"
+                                <Button onClick={this.props.viewFood.bind(this,this.props.food.id)} variant="contained"
+                                        size="small"
                                         color="primary">
                                     Go to page
                                 </Button>
