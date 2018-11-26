@@ -31,7 +31,7 @@ class FoodCard extends Component {
                                  Food Type :   {this.props.food.foodType}
                                 </Typography>
                                     </Grid>
-                                    <Grid item xs={4}>
+                                    <Grid item xs={6}>
                                 <Typography component="p">
                                   Taste Type:  {this.props.food.tasteType}
                                 </Typography>
