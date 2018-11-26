@@ -118,10 +118,7 @@ class HallListForClient extends Component {
                     ) : "NO Halls Found..........!!!!!!!!!"
                 }
 
-                <Button variant="fab" onClick={this.addNewHall.bind(this)} className={classes.fab}
-                        color="primary">
-                    <AddIcon />
-                </Button>
+               
 
                 <Dialog
                     fullScreen
