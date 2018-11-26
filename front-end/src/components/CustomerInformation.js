@@ -18,6 +18,10 @@ const styles = theme => ({
     }
 });
 
+const Obj = [
+
+];
+
 
 class CustomerInformation extends Component {
     constructor(props) {
@@ -32,9 +36,38 @@ class CustomerInformation extends Component {
     };
 
     saveValues(){
-        
-        
-        //this.props.reservationReq
+      let Obj = [
+        Banquethall:{
+          name:this.props.BanquestHall.name,
+          hallType:this.props.BanquestHall.hallType,
+          costPerHour:this.props.Banquethall.costPerHour,
+          size:this.props.Banquethall.size,
+          maxTables:this.props.Banquethall.maxTables,
+          maxChairs:this.props.Banquethall.maxChairs,
+          capacity:this.props.Banquethall.capacity,
+        },
+
+        personCount:this.props.personCount,
+        tableCount:this.props.tableCount,
+        chairCount:this.props.chairCount,
+        serviceRequest:this.props.serviceRequest,
+        foodRequest:this.props.foodRequest,
+        foodOrder:this.props.foodOrder,
+
+        Customer:{
+          name:this.props.Customer.name,
+          mobileNumber:this.props.Customer.mobileNumber,
+          email:this.props.Customer.email,
+          address:this.props.Customer.address,
+        },
+
+        fromDate:this.props.fromDate,
+        toDate:this.props.toDate,
+        totalCost:this.props.totalCost,
+        downPayent:this.props.downPayent
+
+      ];
+
     }
 
     render() {
