@@ -114,7 +114,7 @@ class ClientHallCard extends Component {
                       
                         <Grid container justify="flex-end" style={{padding:10, margin:0, width:"100%"}}>
 
-                            <Button variant="contained" color="primary" onClick={this.props.viewHall.bind(this)} className={classes.button}>
+                            <Button variant="contained" color="primary" onClick={this.props.viewHall.bind(this,hall)} className={classes.button}>
                                 Reserve
                             </Button>
                         </Grid>
