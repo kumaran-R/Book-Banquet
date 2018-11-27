@@ -87,7 +87,7 @@ export const fetchAllReservations = () => {
     return (dispatch) => {
         return axios.get(apiUrl+'/all')
             .then(response => {
-                dispatch(fetchReservation(response.data))
+                dispatch(fetchReservations(response.data))
             })
             .catch(error => {
                 throw(error);

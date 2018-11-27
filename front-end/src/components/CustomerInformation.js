@@ -18,10 +18,6 @@ const styles = theme => ({
     }
 });
 
-const Obj = [
-
-];
-
 
 class CustomerInformation extends Component {
     constructor(props) {
@@ -36,37 +32,32 @@ class CustomerInformation extends Component {
     };
 
     saveValues(){
-      let Obj = [
-        Banquethall:{
-          name:this.props.BanquestHall.name,
-          hallType:this.props.BanquestHall.hallType,
-          costPerHour:this.props.Banquethall.costPerHour,
-          size:this.props.Banquethall.size,
-          maxTables:this.props.Banquethall.maxTables,
-          maxChairs:this.props.Banquethall.maxChairs,
-          capacity:this.props.Banquethall.capacity,
-        },
+      let Obj = {
+          banqueteHall: this.props.hall,
+          personCount: this.props.reservationReqValues.personCount,
+          tableCount: this.props.reservationReqValues.tableCount,
+          chairCount: this.props.reservationReqValues.personCount,
+          serviceRequest: true,
+          foodRequest: true,
+          foodOrders: this.props.foodOrders,
+      
+          customer: {
+              name: this.state.name,
+              mobileNumber: this.state.phone,
+              email: this.state.email,
+              address: this.state.address,
+          },
+      
+          fromDate: this.props.reservationReqValues.from,
+          toDate: this.props.reservationReqValues.to,
+          totalCost: this.props.reservationReqValues.totalCost,
+          downPayment: this.state.downPayment
+      
+      };
+        
+        console.log(Obj);
 
-        personCount:this.props.personCount,
-        tableCount:this.props.tableCount,
-        chairCount:this.props.chairCount,
-        serviceRequest:this.props.serviceRequest,
-        foodRequest:this.props.foodRequest,
-        foodOrder:this.props.foodOrder,
-
-        Customer:{
-          name:this.props.Customer.name,
-          mobileNumber:this.props.Customer.mobileNumber,
-          email:this.props.Customer.email,
-          address:this.props.Customer.address,
-        },
-
-        fromDate:this.props.fromDate,
-        toDate:this.props.toDate,
-        totalCost:this.props.totalCost,
-        downPayent:this.props.downPayent
-
-      ];
+        this.props.createReservation(Obj)
 
     }
 

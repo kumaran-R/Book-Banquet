@@ -156,7 +156,10 @@ class HallReservePage extends React.Component {
                             <Grid item xs={12}>
                                 <TabContainer dir={theme.direction}>
                                     <CustomerInformation handleNext={this.handleNext.bind(this)}
-                                                         reservationReq={this.state.reservationReqValues}
+                                                         hall={hall}
+                                                         reservationReqValues={this.state.reservationReqValues}
+                                                         reservationReq={this.state.reservationReq}
+                                                         foodOrders={this.state.reservationReqFoodOrders}
                                                          handleBack={this.handleBack} dir={theme.direction}
                                         {...this.props}
                                     />
