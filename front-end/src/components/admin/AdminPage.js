@@ -99,19 +99,7 @@ class AdminPage extends Component {
 
                     <LoginContainer />
                 }
-                {
-                    (this.props.loginReducer.loginStatus === false && this.props.loginReducer.checkDetail === true) &&
-                    <Grid container justify="center" spacing={24} style={{padding:24, margin:0, width:"100%"}}>
-
-                        <Grid item xs={4}>
-                            <Paper style={{padding:24, margin:0, width:"100%"}}>
-                                <Typography align="center" variant="h4" gutterBottom> Check Login
-                                    details..!!!</Typography>
-                            </Paper>
-                        </Grid>
-
-                    </Grid>
-                }
+               
 
                 {
                     (this.props.loginReducer.loginStatus === true ) &&

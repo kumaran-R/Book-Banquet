@@ -12,7 +12,10 @@ import Slide from '@material-ui/core/Slide';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import TheHallFormContainer from '../../Containers/TheHallFormContainer.js'
+import TheHallFormContainer from '../../Containers/TheHallFormContainer.js';
+import {resetReservation} from "./../../Actions/reservationActions.js"
+
+
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -76,6 +79,7 @@ class HallLists extends Component {
 
     handleClickAddNewHallClose = () => {
         this.setState({newHallopen: false});
+        resetReservation();
     };
 
     viewHall(id) {

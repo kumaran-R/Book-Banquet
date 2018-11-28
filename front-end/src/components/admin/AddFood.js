@@ -17,11 +17,12 @@ import FormLabel from '@material-ui/core/FormControl'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import purple from '@material-ui/core/colors/purple';
 import green from '@material-ui/core/colors/green';
+import grey from '@material-ui/core/colors/grey';
 
 const theme = createMuiTheme({
   palette: {
-    primary: purple,
-    secondary: green,
+
+    secondary: grey,
   },
 
   overrides: {
@@ -30,7 +31,7 @@ const theme = createMuiTheme({
       // Name of the rule
       root: {
         // Some CSS
-        background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+       // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
         borderRadius: 3,
         border: 0,
         color: 'white',
@@ -45,13 +46,13 @@ const theme = createMuiTheme({
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        primary: '#ec407a'
+       // primary: '#ec407a'
     },
     title:{
       color:'#f4511e'
     },
     create:{
-      background:'#43a047',
+     // background:'#43a047',
       color:"#fff"
     },
     background:{

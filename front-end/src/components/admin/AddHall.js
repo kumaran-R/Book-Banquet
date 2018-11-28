@@ -181,23 +181,23 @@ class AddHall extends Component {
 
                                 >
                                     <FormControlLabel
-                                        value="Type 1"
+                                        value="Water View"
                                         control={<Radio disabled={this.state.viewMode} color="primary" />}
-                                        label="Type 1"
+                                        label="Water View"
                                         labelPlacement="end"
 
                                     />
                                     <FormControlLabel
-                                        value="Type 2"
+                                        value="Enclosed"
                                         control={<Radio disabled={this.state.viewMode} color="primary" />}
-                                        label="type 2"
+                                        label="Enclosed"
                                         labelPlacement="end"
 
                                     />
                                     <FormControlLabel
-                                        value="Type 3"
+                                        value="Balcony"
                                         control={<Radio disabled={this.state.viewMode} color="primary" />}
-                                        label="type 3"
+                                        label="Balcony"
                                         labelPlacement="end"
 
                                     />

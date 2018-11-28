@@ -137,7 +137,7 @@ class HallListForClient extends Component {
                      </Toolbar>
                      </AppBar><Grid container style={{padding:5, margin:0, width:"100%"}}>
                      <Grid item xs={12} style={{padding:24, margin:0, width:"100%"}}>
-                    <ClientReservationContainer hall={this.state.selectedHall} />
+                    <ClientReservationContainer hall={this.state.selectedHall} closeDialog={this.handleClickAddNewHallClose.bind(this)} />
                      </Grid>
                      </Grid>
                     

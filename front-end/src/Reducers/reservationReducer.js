@@ -1,7 +1,7 @@
 
 import { ADD_RESERVATION, DELETE_RESERVATION, FETCH_RESERVATION, RESET_RESERVATION, FETCH_RESERVATION_LIST } from './../Actions/types.js';
 
-export default function reservationReducer(state = {}, action) {
+export default function reservationReducer(state = {createStatus:false}, action) {
     switch (action.type) {
         case RESET_RESERVATION:
             return {...state, createStatus:false, reservation:{}};

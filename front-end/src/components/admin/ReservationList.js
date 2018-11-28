@@ -13,6 +13,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import TheHallFormContainer from '../../Containers/TheHallFormContainer.js'
+import ViewReservationContainer from "./../../Containers/ViewReservationContainer.js"
+
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -37,7 +39,12 @@ class ReservationList extends Component {
             searchString: "",
             newHallopen: false,
             currentHallId: "",
-            hallViewMode: false
+            hallViewMode: false,
+            currentRes:{
+                customer:{},
+                banquetHall:{},
+                foodOrders:{}
+            }
         }
     }
 
@@ -78,15 +85,16 @@ class ReservationList extends Component {
         this.setState({newHallopen: false});
     };
 
-    viewHall(id) {
+    viewHall(res) {
         this.setState({
-            currentHallId: id,
-            hallViewMode: true
+            currentHallId: res.id,
+            hallViewMode: true,
+            currentRes:res
         })
 
         this.handleClickAddNewHallOpen();
 
-        console.log(id)
+        console.log(res.id)
     }
 
 
@@ -112,6 +120,27 @@ class ReservationList extends Component {
 
                     ) : "NO Reservations Found..........!!!!!!!!!"
                 }
+
+
+                <Dialog
+                    fullScreen
+                    open={this.state.newHallopen}
+                    onClose={this.handleClickAddNewHallClose}
+                    // TransitionComponent={Transition}
+                >
+
+                    <AppBar position="relative" className={classes.appBar}>
+                        <Toolbar>
+                            <IconButton color="inherit" onClick={this.handleClickAddNewHallClose}
+                                        aria-label="Close">
+                                <CloseIcon />
+                            </IconButton>
+                        </Toolbar>
+                    </AppBar>
+                    <Grid container spacing={24} style={{padding:24, margin:0, width:"100%"}}>
+                    <ViewReservationContainer closeDialog={this.handleClickAddNewHallClose.bind(this)} id={this.state.currentHallId} reservation={this.state.currentRes} />
+                    </Grid>
+                    </Dialog>
                 {/**
                 <Button variant="fab" onClick={this.addNewHall.bind(this)} className={classes.fab}
                         color="primary">

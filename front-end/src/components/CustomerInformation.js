@@ -135,7 +135,7 @@ class CustomerInformation extends Component {
 
                         <Grid item xs={6}>
                             <Typography align="center" variant="h4" gutterBottom>
-                                Remaining ${this.props.reservationReq.totalCost-this.state.downPayment}
+                                Remaining ${this.props.reservationReqValues.totalCost-this.state.downPayment}
                             </Typography>
                         </Grid>
 

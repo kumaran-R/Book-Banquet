@@ -41,7 +41,7 @@ class FoodCard extends Component {
                             <CardActions>
                                 <Button onClick={this.props.viewFood.bind(this,this.props.food.id)} variant="contained" size="small"
                                         color="primary">
-                                    Go to page
+                                   View
                                 </Button>
                             </CardActions>
                         </Card>

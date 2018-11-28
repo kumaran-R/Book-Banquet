@@ -23,13 +23,13 @@ class HallCard extends Component {
                                     {this.props.hall.name}
                                 </Typography>
                                 <Typography component="p">
-                                    {this.props.hall.id}
+                                    {this.props.hall.hallType}
                                 </Typography>
                             </CardContent>
                             <CardActions>
                                 <Button onClick={this.props.viewHall.bind(this,this.props.hall.id)} variant="contained" size="small"
                                         color="primary">
-                                    Go to page
+                                    View
                                 </Button>
                             </CardActions>
                         </Card>

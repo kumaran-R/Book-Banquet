@@ -28,37 +28,34 @@ class CustomerDetails extends Component {
     };
 
     render() {
-        let{reservation}=this.props.reservationReducer;
+        let{reservation}=this.props;
         return (
-            <Grid container spacing={24} justify="center" alignItems="center" style={{padding:24, margin:0, width:"100%"}}>
-                <Grid item xs={6}>
+            <Grid container spacing={24} justify="center" alignItems="center" style={{padding:5, margin:0, width:"100%"}}>
+
+                <Grid item xs={12}>
                     <Paper>
-                        <Grid container spacing={24} justify="center" alignItems="center" style={{padding:24, margin:0, width:"100%"}}>
-                            <Grid item xs={12}>
-                                <Typography component="h2" variant = "h3" align ="center" color = "primary" >
-                                    Customer Details
-                                </Typography>
-                            </Grid>
+                        <Grid container spacing={3} justify="center" alignItems="center" style={{ margin:0, width:"100%"}}>
+
 
                             <Grid item xs={12}>
                                 <List>
-                                    <Grid container spacing={24} style={{padding:24, margin:0, width:"100%"}}>
-                                        <Grid item xs={4}>
+                                    <Grid container spacing={3} style={{ margin:0, width:"100%"}}>
+                                        <Grid item xs={3}>
                                             <ListItem>
                                                 <ListItemText primary={reservation.customer.name} secondary="Name"/>
                                             </ListItem>
                                         </Grid>
-                                        <Grid item xs={4}>
+                                        <Grid item xs={3}>
                                             <ListItem>
                                                 <ListItemText primary={reservation.customer.mobileNumber} secondary="Phone Number"/>
                                             </ListItem>
                                         </Grid>
-                                        <Grid item xs={4}>
+                                        <Grid item xs={3}>
                                             <ListItem>
                                                 <ListItemText primary={reservation.customer.email} secondary="Email"/>
                                             </ListItem>
                                         </Grid>
-                                        <Grid item xs={4}>
+                                        <Grid item xs={3}>
                                             <ListItem>
                                                 <ListItemText primary={reservation.customer.address} secondary="address"/>
                                             </ListItem>

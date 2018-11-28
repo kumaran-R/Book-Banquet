@@ -80,13 +80,13 @@ class HallReservePage extends React.Component {
             activeStep: activeStep + 1,
 
         });
-        
-        if(key==="values"){
+
+        if (key === "values") {
             this.state.reservationReqValues = value;
         }
-        
-        if(key==="foodOrders"){
-            this.state.reservationReqFoodOrders=value;
+
+        if (key === "foodOrders") {
+            this.state.reservationReqFoodOrders = value;
         }
 
         this.state.reservationReq = {[key]: value}
@@ -111,8 +111,22 @@ class HallReservePage extends React.Component {
         this.props.fetchAllFoods();
     }
 
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.reservationReducer.createStatus === true) {
+            //this.props.closeDialog();
+            //this.props.resetReservation();
+        }
+    }
+
     isStepSkipped(step) {
         return this.state.skipped.has(step);
+    }
+
+
+    acceptOk() {
+        this.props.closeDialog();
+        this.props.resetReservation();
     }
 
     render() {
@@ -122,52 +136,85 @@ class HallReservePage extends React.Component {
 
         return (
             <div className={classes.root}>
-                <Stepper activeStep={activeStep}>
-                    {steps.map((label, index) => {
-                        const props = {};
-                        const labelProps = {};
-                        return (
-                            <Step key={label} {...props}>
-                                <StepLabel {...labelProps}>{label}</StepLabel>
-                            </Step>
-                        );
-                    })}
-                </Stepper>
 
 
-                <Grid container spacing={24} style={{padding:2, margin:0, width:"100%"}}>
-                    <Grid item xs={12}>
-                        <SwipeableViews
-                            axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-                            index={activeStep}
-                            //onChangeIndex={this.handleChangeIndex}
-                        >
-                            <Grid item xs={12}>
-                                <TabContainer dir={theme.direction}>
-                                    <HallDurationSelection hall={hall} handleNext={this.handleNext.bind(this)}/>
-                                </TabContainer>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TabContainer dir={theme.direction}>
-                                    <AddFoodOrder handleNext={this.handleNext.bind(this)} handleBack={this.handleBack}
-                                                  foods={this.props.foodReducer.foods}/>
-                                </TabContainer
-                                ></Grid>
-                            <Grid item xs={12}>
-                                <TabContainer dir={theme.direction}>
-                                    <CustomerInformation handleNext={this.handleNext.bind(this)}
-                                                         hall={hall}
-                                                         reservationReqValues={this.state.reservationReqValues}
-                                                         reservationReq={this.state.reservationReq}
-                                                         foodOrders={this.state.reservationReqFoodOrders}
-                                                         handleBack={this.handleBack} dir={theme.direction}
-                                        {...this.props}
-                                    />
-                                </TabContainer>
-                            </Grid>
-                        </SwipeableViews>
+                {
+                    this.props.reservationReducer.createStatus == true &&
+                    <Grid container justify="center" spacing={24} style={{padding:2, margin:0, width:"100%"}}>
+                        <Grid item justify="center" xs={6}>
+
+                            <Paper>
+                                <Grid container justify="center" spacing={24}
+                                      style={{padding:2, margin:0, width:"100%"}}>
+                                    <Grid item style={{textAlign:'center',padding:'20px'}} xs={12}>
+
+                                        <h1>Reservation Success......!!!!</h1>
+                                    </Grid>
+
+                                    <Button variant="contained" color="primary" onClick={this.acceptOk.bind(this)}>
+                                        OK
+                                    </Button>
+                                </Grid>
+                            </Paper>
+                        </Grid>
                     </Grid>
-                </Grid>
+
+                }
+
+                {
+                    this.props.reservationReducer.createStatus == false &&
+
+                    <Stepper activeStep={activeStep}>
+                        {steps.map((label, index) => {
+                            const props = {};
+                            const labelProps = {};
+                            return (
+                                <Step key={label} {...props}>
+                                    <StepLabel {...labelProps}>{label}</StepLabel>
+                                </Step>
+                            );
+                        })}
+                    </Stepper>
+                }
+
+                {
+                    this.props.reservationReducer.createStatus == false &&
+
+                    <Grid container spacing={24} style={{padding:2, margin:0, width:"100%"}}>
+                        <Grid item xs={12}>
+                            <SwipeableViews
+                                axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                                index={activeStep}
+                                //onChangeIndex={this.handleChangeIndex}
+                            >
+                                <Grid item xs={12}>
+                                    <TabContainer dir={theme.direction}>
+                                        <HallDurationSelection hall={hall} handleNext={this.handleNext.bind(this)}/>
+                                    </TabContainer>
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <TabContainer dir={theme.direction}>
+                                        <AddFoodOrder handleNext={this.handleNext.bind(this)}
+                                                      handleBack={this.handleBack}
+                                                      foods={this.props.foodReducer.foods}/>
+                                    </TabContainer
+                                    ></Grid>
+                                <Grid item xs={12}>
+                                    <TabContainer dir={theme.direction}>
+                                        <CustomerInformation handleNext={this.handleNext.bind(this)}
+                                                             hall={hall}
+                                                             reservationReqValues={this.state.reservationReqValues}
+                                                             reservationReq={this.state.reservationReq}
+                                                             foodOrders={this.state.reservationReqFoodOrders}
+                                                             handleBack={this.handleBack} dir={theme.direction}
+                                            {...this.props}
+                                        />
+                                    </TabContainer>
+                                </Grid>
+                            </SwipeableViews>
+                        </Grid>
+                    </Grid>
+                }
 
 
             </div>

@@ -28,24 +28,23 @@ class HallDetails extends Component {
     };
 
     render() {
-        let {reservation}=this.props.reservationsReducer;
+        let {reservation}=this.props;
         return (
-            <Grid container spacing={24} justify="center" alignItems="center" style={{padding:24, margin:0, width:"100%"}}>
-                <Grid item xs={6}>
+            <Grid container spacing={24} justify="center"  style={{margin:0, width:"100%"}}>
+
+
+                
+                <Grid item xs={12}>
                     <Paper>
-                        <Grid container spacing={24} justify="center" alignItems="center" style={{padding:24, margin:0, width:"100%"}}>
-                            <Grid item xs={12}>
-                                <Typography component="h2" variant = "h3" align ="center" color = "primary" >
-                                    Hall Details
-                                </Typography>
-                            </Grid>
+                        <Grid container spacing={3} justify="center"  style={{ margin:0, width:"100%"}}>
+                           
 
                             <Grid item xs={12}>
                                 <List>
-                                    <Grid container spacing={24} style={{padding:24, margin:0, width:"100%"}}>
+                                    <Grid container spacing={3} style={{padding:5, margin:0, width:"100%"}}>
                                         <Grid item xs={4}>
                                             <ListItem>
-                                                <ListItemText primary={reservation.banquetHall.name} secondary="reservation"/>
+                                                <ListItemText primary={reservation.banqueteHall.name} secondary="reservation"/>
                                             </ListItem>
                                         </Grid>
                                         <Grid item xs={4}>
@@ -58,26 +57,23 @@ class HallDetails extends Component {
                                                 <ListItemText primary={reservation.tableCount} secondary="Table Count"/>
                                             </ListItem>
                                         </Grid>
-                                        <Grid item xs={4}>
-                                            <ListItem>
-                                                <ListItemText primary={reservation.chairCount} secondary="Chair Count"/>
-                                            </ListItem>
-                                        </Grid>
-                                        <Grid item xs={4}>
-                                            <ListItem>
-                                                <ListItemText primary={reservation.serviceRequest} secondary="Service Request"/>
-                                            </ListItem>
-                                        </Grid>
-                                        <Grid item xs={4}>
+
+
+                                        <Grid item xs={6}>
                                             <ListItem>
                                                 <ListItemText primary={reservation.fromDate} secondary="Start Date"/>
                                             </ListItem>
                                         </Grid>
-                                        <Grid item xs={4}>
+
+                                        <Grid item xs={6}>
                                             <ListItem>
                                                 <ListItemText primary={reservation.toDate} secondary="End Date"/>
                                             </ListItem>
-                                        </Grid>
+                                        </Grid><Grid item xs={4}>
+                                        <ListItem>
+                                            <ListItemText primary={reservation.chairCount} secondary="Chair Count"/>
+                                        </ListItem>
+                                    </Grid>
                                         <Grid item xs={4}>
                                             <ListItem>
                                                 <ListItemText primary={reservation.totalCost} secondary="Total Cost"/>

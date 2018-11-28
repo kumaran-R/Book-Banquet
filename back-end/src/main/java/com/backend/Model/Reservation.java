@@ -24,8 +24,9 @@ public class Reservation {
     String toDate;
     String totalCost;
     String downPayment;
+    boolean reviewStatus;
 
-    public Reservation(String id, BanqueteHall banqueteHall, int personCount, int tableCount, int chairCount, boolean serviceRequest, boolean foodRequest, List<FoodOrder> foodOrders, Customer customer, String fromDate, String toDate, String totalCost, String downPayment) {
+    public Reservation(String id, BanqueteHall banqueteHall, int personCount, int tableCount, int chairCount, boolean serviceRequest, boolean foodRequest, List<FoodOrder> foodOrders, Customer customer, String fromDate, String toDate, String totalCost, String downPayment,boolean reviewStatus) {
         this.id = id;
         this.banqueteHall = banqueteHall;
         this.personCount = personCount;
@@ -39,9 +40,18 @@ public class Reservation {
         this.toDate = toDate;
         this.totalCost = totalCost;
         this.downPayment = downPayment;
+        this.reviewStatus = reviewStatus;
     }
 
     public Reservation() {
+    }
+
+    public boolean isReviewStatus() {
+        return reviewStatus;
+    }
+
+    public void setReviewStatus(boolean reviewStatus) {
+        this.reviewStatus = reviewStatus;
     }
 
     public String getId() {

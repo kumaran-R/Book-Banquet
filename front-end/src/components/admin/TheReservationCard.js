@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button"
 import Typography from "@material-ui/core/Typography"
 import TextField from "@material-ui/core/TextField"
 import Grid from "@material-ui/core/Grid";
-
+import Chip from "@material-ui/core/Chip";
 class TheReservationCard extends Component {
 
     constructor(props) {
@@ -57,7 +57,18 @@ class TheReservationCard extends Component {
                                     {this.props.reservation.banqueteHall.name}
                                 </Typography>
 
-                                <Grid container style={{padding:2, margin:0, width:"100%"}}>
+
+                                <Grid container justify="center" style={{padding:2, margin:0, width:"100%"}}>
+                                    <Grid item xs={2}>
+                                        {
+                                            this.props.reservation.reviewStatus &&
+                                            <Chip color="primary" label="Reviewed"/>
+                                        }
+                                        {
+                                            !this.props.reservation.reviewStatus &&
+                                            <Chip style={{background:'green',color:"#fff"}} label="New"/>
+                                        }
+                                    </Grid>
                                     <Grid item xs={12}>
                                         <TextField
                                             id="outlined-read-only-input"
@@ -102,9 +113,12 @@ class TheReservationCard extends Component {
                                 </Grid>
                             </CardContent>
                             <CardActions>
-                                <Button variant="contained" size="small" color="primary">
-                                    View
-                                </Button>
+                                <Grid container justify="center" style={{padding:2, margin:0, width:"100%"}}>
+                                    <Button onClick={this.props.viewHall.bind(this,this.props.reservation)}
+                                            variant="contained" size="small" color="primary">
+                                        View
+                                    </Button>
+                                </Grid>
                             </CardActions>
                         </Card>
                     ) : null

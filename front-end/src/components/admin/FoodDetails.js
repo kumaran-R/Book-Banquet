@@ -28,29 +28,25 @@ class FoodDetails extends Component {
     };
 
     render() {
-        let{reservation}=this.props.reservationReducer;
+        let{reservation}=this.props;
         return (
-            <Grid container spacing={24} justify="center" alignItems="center" style={{padding:24, margin:0, width:"100%"}}>
+
                 <Grid item xs={6}>
                     <Paper>
-                        <Grid container spacing={24} justify="center" alignItems="center" style={{padding:24, margin:0, width:"100%"}}>
-                            <Grid item xs={12}>
-                                <Typography component="h2" variant = "h3" align ="center" color = "primary" >
-                                    Food Details
-                                </Typography>
-                            </Grid>
+                        <Grid container justify="center" alignItems="center" style={{ margin:0, width:"100%"}}>
+                           
 
                             <Grid item xs={12}>
                                 <List>
-                                    <Grid container spacing={24} style={{padding:24, margin:0, width:"100%"}}>
+                                    <Grid container spacing={3} style={{ margin:0, width:"100%"}}>
                                         <Grid item xs={6}>
                                             <ListItem>
-                                                <ListItemText primary={reservation.foodOrders.food.foodName} secondary="Food Name"/>
+                                                <ListItemText primary={reservation.food.foodName} secondary="Food Name"/>
                                             </ListItem>
                                         </Grid>
                                         <Grid item xs={6}>
                                             <ListItem>
-                                                <ListItemText primary={reservation.foodOrders.count} secondary="Food Quantity"/>
+                                                <ListItemText primary={reservation.count} secondary="Food Quantity"/>
                                             </ListItem>
                                         </Grid>
 
@@ -62,7 +58,6 @@ class FoodDetails extends Component {
                     </Paper>
                 </Grid>
 
-            </Grid>
         )
     }
 }

@@ -28,7 +28,7 @@ class FoodCard extends Component {
                                 <Grid container spacing={8} style={{padding:2, margin:0, width:"100%"}}>
                                     <Grid item xs={6}>
                                         <TextField
-                                            label="Taste"
+                                            label="Type"
                                             variant="outlined"
                                             value={this.props.food.foodType}
                                             fullWidth
@@ -52,7 +52,7 @@ class FoodCard extends Component {
                                 <Button onClick={this.props.viewFood.bind(this,this.props.food.id)} variant="contained"
                                         size="small"
                                         color="primary">
-                                    Go to page
+                                   View
                                 </Button>
                             </CardActions>
                         </Card>
