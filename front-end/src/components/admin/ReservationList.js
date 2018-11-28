@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import TextField from "@material-ui/core/TextField"
-import HallCard from "./HallCard.js";
+import TheReservationCard from "./TheReservationCard.js";
 import Button from "@material-ui/core/Button"
 import AddIcon from '@material-ui/icons/Add'
 import Dialog from '@material-ui/core/Dialog'
@@ -102,7 +102,7 @@ class ReservationList extends Component {
                             {
                                 this.props.reservationReducer.reservations.map((hall, index)=> {
                                     return <Grid item key={index} xs={6} sm={4} lg={3} xl={2}>
-                                        <HallCard viewHall={this.viewHall.bind(this)} hall={hall}/>
+                                        <TheReservationCard viewHall={this.viewHall.bind(this)} reservation={hall}/>
                                     </Grid>
 
 

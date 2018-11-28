@@ -19,6 +19,18 @@ public class FoodOrder {
         this.food = food;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public Food getFood() {
+        return food;
+    }
+
     public FoodOrder() {
     }
 

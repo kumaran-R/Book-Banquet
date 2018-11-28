@@ -18,3 +18,5 @@ export const FETCH_RESERVATION = 'FETCH_RESERVATION';
 export const FETCH_RESERVATION_LIST = 'FETCH_RESERVATION_LIST';
 
 export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
+export const LOGIN_FAIL = 'LOGIN_FAIL';

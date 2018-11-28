@@ -36,10 +36,10 @@ class MyAppBar extends Component{
                         <IconButton className={classes.menuButton} onClick={this.props.toggleDrawer.bind(this,true)} color="inherit" aria-label="Menu">
                             <MenuIcon />
                         </IconButton>
-                        <Typography variant="h6" color="inherit" className={classes.grow}>
-                            News
+                        <Typography align="center" variant="h4" color="inherit" className={classes.grow}>
+                            {this.props.menuName}
                         </Typography>
-                        <Button color="inherit">Login</Button>
+                        <Button onClick={this.props.logout.bind(this)} color="inherit">Logout</Button>
                     </Toolbar>
                 </AppBar>
             </div>
